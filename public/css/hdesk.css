@@ -1,0 +1,17 @@
+.hdesk-container{
+	border: 1px solid #ddd;
+	padding: 20px;
+}
+
+.hdesk-hr{
+	border: 1px dotted #ddd;
+}
+.priority-low{
+    background: orange !important;
+}
+.priority-medium{
+    background: green;
+}
+.priority-high{
+    background: red;
+}
