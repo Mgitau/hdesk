@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use Mail;
+//use Mail;
 
 Route::group(['middleware' => ['web']], function (){
 
@@ -32,15 +32,15 @@ Route::group(['middleware' => ['web']], function (){
 			'as'	=> 'ticket.ticketform',
 
 		]);
-    
+
     Route::post('submitticket', [
 			'uses'	=> '\Hdesk\Http\Controllers\TicketController@postTicket',
 
 		]);
-    
-    
-    
-    
+
+
+
+
     /**
 	+ Search
 	*/
@@ -48,27 +48,38 @@ Route::group(['middleware' => ['web']], function (){
         'uses'  => '\Hdesk\Http\Controllers\SearchController@getSearch',
         'as'    => 'search.ticketsearch',
     ]);
-    
+
     Route::get('results',[
         'uses'  => '\Hdesk\Http\Controllers\SearchController@getResults',
         'as'    => 'search.results',
-    ]); 
-    
+    ]);
+
+
+// Test route for emails
     Route::get('email', function(){
-        
+
         Mail::send('email.test',['name' => 'Mbugua'], function($message){
             $message->to('mbugit88@gmail.com', 'H-desk')->subject('Ticket #1');
         });
-        
+
     });
 
-	/**
-	+ Alerts
-	*/
-	Route::get('/alert', function () {
-		return redirect()->route('home')->with('info', 'This is an alert');
-	});
-    
-   
+
+/**
+* Admin
+*/
+route::get('login', [
+		'uses'	=> '\Hdesk\Http\Controllers\AdminController@getLogin',
+		'as'		=> 'admin.login',
+]);
+
+/**
++ Alerts
+*/
+Route::get('/alert', function () {
+	return redirect()->route('home')->with('info', 'This is an alert');
+});
+
+
 
 });

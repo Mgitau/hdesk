@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 	<link rel="stylesheet" type="text/css" href="css/hdesk.css">
 <!--    <link rel="stylesheet" href="{{ asset('hdesk.css') }}">-->
-   
+
 
 </head>
 <body>
