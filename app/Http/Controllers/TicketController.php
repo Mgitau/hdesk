@@ -30,7 +30,7 @@ class TicketController extends Controller
             'message' => 'required',
             'ticket_no' => 'required',
         ]);
-        
+
         $ticket = Ticket::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -40,21 +40,23 @@ class TicketController extends Controller
             'message' => $request->input('message'),
             'ticket_no' => $request->input('ticket_no'),
         ]);
-         $ticketnumber =$request->input('ticket_no');
-        
-        //Send submitted ticket in an email
-        Mail::send('ticket.email', ['ticket' => $ticket], function($message) use ($ticket){
-            $message->to($ticket->email, $ticket->name)
-                    ->subject($ticket->ticket_no)
-                    ->bcc('it@triad.co.ke', 'Triad IT Dpartment');
-        });
-        
-        
-        
-        
-        return redirect()->route('home')->with('info', 'Your ticket has been successfully submitted! Ticket ID: '.$ticketnumber);
-    }
-    
-    
- 
+        $ticketnumber =$request->input('ticket_no');
+
+//Email not working on windows environment-- uncomment on linux
+
+       //Send submitted ticket in an email
+      //  Mail::send('ticket.email', ['ticket' => $ticket], function($message) use ($ticket){
+      //      $message->to($ticket->email, $ticket->name)
+      //              ->subject($ticket->ticket_no)
+      //              ->bcc('it@triad.co.ke', 'Triad IT Dpartment');
+      //  });
+
+
+
+
+       return redirect()->route('home')->with('info', 'Your ticket has been successfully submitted! Ticket ID: '.$ticketnumber);
+   }
+
+
+
 }
