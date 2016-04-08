@@ -70,6 +70,8 @@ return [
             'model' => Hdesk\User::class,
         ],
 
+
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

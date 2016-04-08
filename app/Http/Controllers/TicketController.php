@@ -15,7 +15,7 @@ class TicketController extends Controller
 	//Display Ticket Form View
     public function getTicket()
     {
-    	return view('ticket.ticketform');
+    	return view('ticket.newticket');
     }
 
     //Get Ticket data from Form
@@ -54,7 +54,7 @@ class TicketController extends Controller
 
 
 
-       return redirect()->route('home')->with('info', 'Your ticket has been successfully submitted! Ticket ID: '.$ticketnumber);
+       return redirect()->route('home')->with('info', 'Your ticket has been successfully submitted! Ticket ID: <a href'.$ticketnumber);
    }
 
 
