@@ -58,21 +58,26 @@ Route::group(['middleware' => ['web']], function (){
 		* Admin
 		*/
 		Route::get('admin/login',[
-			'uses'	=> '\Hdesk\Http\Controllers\AdminController@getLogin',
+			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getLogin',
 			'as'		=> 'admin.login',
 		]);
 
 		Route::post('admin/login',[
-			'uses'	=> '\Hdesk\Http\Controllers\AdminController@postLogin',
+			'uses'	=> '\Hdesk\Http\Controllers\AuthController@postLogin',
 		]);
 
-		Route::get('admin/newadmin',[
-			'uses'	=> '\Hdesk\Http\Controllers\AdminController@getCreateAdmin',
-			'as'		=> 'admin.createadmin',
+		Route::get('admin/new',[
+			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
+			'as'		=> 'admin.newadmin',
 		]);
 
-		Route::post('admin/newadmin',[
-			'uses'	=> '\Hdesk\Http\Controllers\AdminController@postCreateAdmin',
+		Route::post('admin/new',[
+			'uses'	=> '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
+		]);
+
+		Route::get('admin/new',[
+			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getSignOut',
+			'as'		=> 'admin.signout',
 		]);
 
 		/**
@@ -90,11 +95,10 @@ Route::group(['middleware' => ['web']], function (){
 		/**
 		+ Dashboard
 		*/
-		Route::get('admin/dashboard',function(){
-			return view('dashboard.index');
-		});
-
-
+		Route::get('admin/dashboard',[
+			'uses'	=> '\Hdesk\Http\Controllers\DashboardController@getDashboard',
+			'as'		=> 'dashboard.index',
+		]);
 
 	/**
 	+ Alerts
