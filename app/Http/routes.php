@@ -26,12 +26,12 @@ Route::group(['middleware' => ['web']], function (){
 	/**
 	+ Ticket
 	*/
-	Route::get('submitticket', [
+	Route::get('ticket/new', [
 			'uses'	=> '\Hdesk\Http\Controllers\TicketController@getTicket',
-			'as'	=> 'ticket.ticketform',
+			'as'	=> 'ticket.newticket',
 		]);
 
-    Route::post('submitticket', [
+    Route::post('ticket/new', [
 			'uses'	=> '\Hdesk\Http\Controllers\TicketController@postTicket',
 		]);
 
@@ -51,17 +51,50 @@ Route::group(['middleware' => ['web']], function (){
 
 		Route::get('ticket/{ticketid}', [
 			'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
-			'as'		=> 'search.ticketbyid'
+			'as'		=> 'search.ticketbyid',
 		]);
 
+		/**
+		* Admin
+		*/
+		Route::get('admin/login',[
+			'uses'	=> '\Hdesk\Http\Controllers\AdminController@getLogin',
+			'as'		=> 'admin.login',
+		]);
 
-    // Route::get('email', function(){
-		//
-    //     Mail::send('email.test',['name' => 'Mbugua'], function($message){
-    //         $message->to('mbugit88@gmail.com', 'H-desk')->subject('Ticket #1');
-    //     });
-		//
-    // });
+		Route::post('admin/login',[
+			'uses'	=> '\Hdesk\Http\Controllers\AdminController@postLogin',
+		]);
+
+		Route::get('admin/newadmin',[
+			'uses'	=> '\Hdesk\Http\Controllers\AdminController@getCreateAdmin',
+			'as'		=> 'admin.createadmin',
+		]);
+
+		Route::post('admin/newadmin',[
+			'uses'	=> '\Hdesk\Http\Controllers\AdminController@postCreateAdmin',
+		]);
+
+		/**
+		* Agent
+		*/
+		Route::get('agent/newagent',[
+			'uses'	=> '\Hdesk\Http\Controllers\AgentController@getCreateAgent',
+			'as'		=> 'agent.createagent',
+		]);
+
+		Route::post('agent/newadmin',[
+			'uses'	=> '\Hdesk\Http\Controllers\AgentController@postCreateAgent',
+		]);
+
+		/**
+		+ Dashboard
+		*/
+		Route::get('admin/dashboard',function(){
+			return view('dashboard.index');
+		});
+
+
 
 	/**
 	+ Alerts
@@ -69,6 +102,14 @@ Route::group(['middleware' => ['web']], function (){
 	Route::get('/alert', function () {
 		return redirect()->route('home')->with('info', 'This is an alert');
 	});
+
+  // Route::get('email', function(){
+	//
+  //     Mail::send('email.test',['name' => 'Mbugua'], function($message){
+  //         $message->to('mbugit88@gmail.com', 'H-desk')->subject('Ticket #1');
+  //     });
+	//
+  // });
 
 
 
