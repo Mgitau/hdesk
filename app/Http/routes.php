@@ -60,22 +60,17 @@ Route::group(['middleware' => ['web']], function (){
 		Route::get('admin/login',[
 			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getLogin',
 			'as'		=> 'admin.login',
+			'middleware'	=> ['guest'],
 		]);
 
 		Route::post('admin/login',[
 			'uses'	=> '\Hdesk\Http\Controllers\AuthController@postLogin',
+			'middleware'	=> ['guest'],
 		]);
 
-		Route::get('admin/new',[
-			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
-			'as'		=> 'admin.newadmin',
-		]);
 
-		Route::post('admin/new',[
-			'uses'	=> '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
-		]);
 
-		Route::get('admin/new',[
+		Route::get('admin/signout',[
 			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getSignOut',
 			'as'		=> 'admin.signout',
 		]);
@@ -107,14 +102,20 @@ Route::group(['middleware' => ['web']], function (){
 		return redirect()->route('home')->with('info', 'This is an alert');
 	});
 
-  // Route::get('email', function(){
-	//
-  //     Mail::send('email.test',['name' => 'Mbugua'], function($message){
-  //         $message->to('mbugit88@gmail.com', 'H-desk')->subject('Ticket #1');
-  //     });
-	//
-  // });
+});
 
 
+//Authenticated routes
+Route::group(['middleware' => 'auth'], function (){
+	Route::get('admin/new',[
+		'uses'	=> '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
+		'as'		=> 'admin.newadmin',
+
+	]);
+
+	Route::post('admin/new',[
+		'uses'	=> '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
+
+	]);
 
 });

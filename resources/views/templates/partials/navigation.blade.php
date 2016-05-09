@@ -10,18 +10,17 @@
 
 		<ul class="nav navbar-nav navbar-right">
 
-
-			<li><a href="{{Route('admin.signout')}}">Sign Out</a></li>
+		@if(!Auth::check())
 			<li><a href="{{Route('ticket.newticket')}}">Submit Ticket</a></li>
 			<li><a href="{{Route('search.ticketsearch')}}">View Ticket</a></li>
 			<li><a href="{{Route('admin.login')}}">Sign In</a></li>
+		@else
 
-
-
-
-
-
-
+			<li><a href="{{Route('dashboard.index')}}">Dashboard</a></li>
+			<li><a href="{{Route('admin.newadmin')}}">New Admin</a></li>
+			<li><a href="#">{{Auth::user()->getFirstNameOrUsername()}}</a></li>
+			<li><a href="{{Route('admin.signout')}}">Sign Out</a></li>
+		@endif
       </ul>
 
 	</div>  <!-- end container-fluid -->

@@ -2,10 +2,6 @@
 
 namespace Hdesk\Models;
 
-// use Illuminate\Auth\User as Authenticatable;
-// use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Foundation\Auth\Authenticatable as AuthenticatableContract;
-
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Auth\Passwords\CanResetPassword;
@@ -37,15 +33,21 @@ class User extends Model implements AuthenticatableContract//, CanResetPasswordC
 
     public function getName(){
       if($this->first_name && $this->last_name){
-        return "{$this->first_name} {$this_last_name}";
+        return "{$this->first_name} {$this->last_name}";
       }
 
       if($this->first_name){
         return $this->first_name;
       }
+
+      return null;
     }
 
     public function getNameOrUsername(){
       return $this->getName() ?: $this->username;
+    }
+
+    public function getFirstNameOrUsername(){
+      return $this->first_name ?: $this->username;
     }
 }
