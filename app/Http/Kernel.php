@@ -34,6 +34,12 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
         ],
+
+        //Own Middleware group @mgitau
+         'admin' => [
+           'web',
+           'auth',
+         ]
     ];
 
     /**

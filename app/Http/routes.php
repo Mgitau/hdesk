@@ -69,12 +69,6 @@ Route::group(['middleware' => ['web']], function (){
 		]);
 
 
-
-		Route::get('admin/signout',[
-			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getSignOut',
-			'as'		=> 'admin.signout',
-		]);
-
 		/**
 		* Agent
 		*/
@@ -105,8 +99,8 @@ Route::group(['middleware' => ['web']], function (){
 });
 
 
-//Authenticated routes
-Route::group(['middleware' => 'auth'], function (){
+//Routes Accessed only by being logged in routes
+Route::group(['middleware' => 'admin'], function (){
 	Route::get('admin/new',[
 		'uses'	=> '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
 		'as'		=> 'admin.newadmin',
@@ -116,6 +110,11 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::post('admin/new',[
 		'uses'	=> '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
 
+	]);
+
+	Route::get('admin/signout',[
+		'uses'	=> '\Hdesk\Http\Controllers\AuthController@getSignOut',
+		'as'		=> 'admin.signout',
 	]);
 
 });
