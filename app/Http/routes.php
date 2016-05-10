@@ -25,31 +25,36 @@ Route::group(['middleware' => ['web']], function (){
 
 
 	/**
-	+ Ticket
+	+ New Ticket
 	*/
-	Route::get('submitticket', [
+	Route::get('ticket/new', [
 			'uses'	=> '\Hdesk\Http\Controllers\TicketController@getTicket',
-			'as'	=> 'ticket.ticketform',
-
+			'as'	=> 'ticket.newticket',
 		]);
 
-    Route::post('submitticket', [
+    Route::post('ticket/new', [
 			'uses'	=> '\Hdesk\Http\Controllers\TicketController@postTicket',
-
 		]);
+
+//Display ticket via the ticket number
+		Route::get('ticket/view/{ticket}', function($ticket){
+				return view('search.results')->with('ticket', $ticket);
+		});
+
+
 
 
 
 
     /**
-	+ Search
+	+ Search Ticket
 	*/
-    Route::get('search',[
+    Route::get('ticket/search',[
         'uses'  => '\Hdesk\Http\Controllers\SearchController@getSearch',
-        'as'    => 'search.ticketsearch',
+        'as'    => 'search.ticket',
     ]);
 
-    Route::get('results',[
+    Route::get('ticket/results',[
         'uses'  => '\Hdesk\Http\Controllers\SearchController@getResults',
         'as'    => 'search.results',
     ]);
