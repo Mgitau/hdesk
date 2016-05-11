@@ -49,10 +49,7 @@ Route::group(['middleware' => ['web']], function (){
         'as'    => 'search.results',
     ]);
 
-		Route::get('ticket/{ticketid}', [
-			'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
-			'as'		=> 'search.ticketbyid',
-		]);
+
 
 		/**
 		* Admin
@@ -92,6 +89,7 @@ Route::group(['middleware' => ['web']], function (){
 
 
 //Routes Accessed only by being logged in routes
+
 Route::group(['middleware' => 'admin'], function (){
 	Route::get('admin/new',[
 		'uses'	=> '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
@@ -116,6 +114,12 @@ Route::group(['middleware' => 'admin'], function (){
 		'uses'	=> '\Hdesk\Http\Controllers\DashboardController@getDashboard',
 		'as'		=> 'dashboard.index',
 	]);
+// Search by ticket number
+Route::get('ticket/{ticketid}', [
+	'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
+	'as'		=> 'search.ticketbyid',
+]);
+
 
 
 });

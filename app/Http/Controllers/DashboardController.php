@@ -14,7 +14,7 @@ class DashboardController extends Controller
   public function getDashboard(){
 
 
-    $tickets = DB::table('tickets')->orderBy('id', 'desc')->paginate(10);
+    $tickets = DB::table('tickets')->orderBy('id', 'desc')->paginate(15);
 
     return view('dashboard.index')->with('tickets', $tickets);
   }
