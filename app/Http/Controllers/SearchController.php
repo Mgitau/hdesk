@@ -3,11 +3,8 @@
 namespace Hdesk\Http\Controllers;
 
 use DB;
-
 use Hdesk\Models\Ticket;
-
 use Illuminate\Http\Request;
-
 
 class SearchController extends Controller
 {

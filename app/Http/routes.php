@@ -81,14 +81,6 @@ Route::group(['middleware' => ['web']], function (){
 			'uses'	=> '\Hdesk\Http\Controllers\AgentController@postCreateAgent',
 		]);
 
-		/**
-		+ Dashboard
-		*/
-		Route::get('admin/dashboard',[
-			'uses'	=> '\Hdesk\Http\Controllers\DashboardController@getDashboard',
-			'as'		=> 'dashboard.index',
-		]);
-
 	/**
 	+ Alerts
 	*/
@@ -116,5 +108,14 @@ Route::group(['middleware' => 'admin'], function (){
 		'uses'	=> '\Hdesk\Http\Controllers\AuthController@getSignOut',
 		'as'		=> 'admin.signout',
 	]);
+
+	/**
+	+ Dashboard
+	*/
+	Route::get('admin/dashboard',[
+		'uses'	=> '\Hdesk\Http\Controllers\DashboardController@getDashboard',
+		'as'		=> 'dashboard.index',
+	]);
+
 
 });
