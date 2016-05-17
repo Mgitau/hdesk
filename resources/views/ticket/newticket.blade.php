@@ -116,7 +116,7 @@
 
 					<hr class="hdesk-hr">
 
-					<div class="form-group">
+					<!-- <div class="form-group">
 
 						<label for="attachments" class="col-lg-2 control-label">Attachments</label>
 
@@ -127,7 +127,7 @@
 						</div>
 
 
-					</div>
+					</div> -->
 
 
 
