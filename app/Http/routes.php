@@ -14,31 +14,31 @@
 Route::group(['middleware' => ['web']], function (){
 
 
-	/**
-	+ Home
-	*/
-	Route::get('/', [
-			'uses' 	=> '\Hdesk\Http\Controllers\HomeController@index',
-			'as'	=> 'home',
-		]);
-
-
-	/**
-	+ Ticket
-	*/
-	Route::get('ticket/new', [
-			'uses'	=> '\Hdesk\Http\Controllers\TicketController@getTicket',
-			'as'	=> 'ticket.newticket',
-		]);
-
-    Route::post('ticket/new', [
-			'uses'	=> '\Hdesk\Http\Controllers\TicketController@postTicket',
-		]);
+    /**
+    + Home
+    */
+    Route::get('/', [
+            'uses'  => '\Hdesk\Http\Controllers\HomeController@index',
+            'as'    => 'home',
+        ]);
 
 
     /**
-	+ Search
-	*/
+    + Ticket
+    */
+    Route::get('ticket/new', [
+            'uses'  => '\Hdesk\Http\Controllers\TicketController@getTicket',
+            'as'    => 'ticket.newticket',
+        ]);
+
+    Route::post('ticket/new', [
+            'uses'  => '\Hdesk\Http\Controllers\TicketController@postTicket',
+        ]);
+
+
+    /**
+    + Search
+    */
     Route::get('search',[
         'uses'  => '\Hdesk\Http\Controllers\SearchController@getSearch',
         'as'    => 'search.ticketsearch',
@@ -49,6 +49,7 @@ Route::group(['middleware' => ['web']], function (){
         'as'    => 'search.results',
     ]);
 
+<<<<<<< HEAD
 		Route::get('ticket/{ticketid}', [
 			'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
 			'as'		=> 'search.ticketbyid',
@@ -110,5 +111,79 @@ Route::group(['middleware' => ['web']], function (){
 		return redirect()->route('home')->with('info', 'This is an alert');
 	});
 
+=======
+
+
+        /**
+        * Admin
+        */
+        Route::get('admin/login',[
+            'uses'  => '\Hdesk\Http\Controllers\AuthController@getLogin',
+            'as'        => 'admin.login',
+            'middleware'    => ['guest'],
+        ]);
+
+        Route::post('admin/login',[
+            'uses'  => '\Hdesk\Http\Controllers\AuthController@postLogin',
+            'middleware'    => ['guest'],
+        ]);
+
+
+        /**
+        * Agent
+        */
+        Route::get('agent/newagent',[
+            'uses'  => '\Hdesk\Http\Controllers\AgentController@getCreateAgent',
+            'as'        => 'agent.createagent',
+        ]);
+
+        Route::post('agent/newadmin',[
+            'uses'  => '\Hdesk\Http\Controllers\AgentController@postCreateAgent',
+        ]);
+
+    /**
+    + Alerts
+    */
+    Route::get('/alert', function () {
+        return redirect()->route('home')->with('info', 'This is an alert');
+    });
+
+});
+
+
+//Routes Accessed only by being logged in routes
+
+Route::group(['middleware' => 'admin'], function (){
+    Route::get('admin/new',[
+        'uses'  => '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
+        'as'        => 'admin.newadmin',
+
+    ]);
+
+    Route::post('admin/new',[
+        'uses'  => '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
+
+    ]);
+
+    Route::get('admin/signout',[
+        'uses'  => '\Hdesk\Http\Controllers\AuthController@getSignOut',
+        'as'        => 'admin.signout',
+    ]);
+
+    /**
+    + Dashboard
+    */
+    Route::get('admin/dashboard',[
+        'uses'  => '\Hdesk\Http\Controllers\DashboardController@getDashboard',
+        'as'        => 'dashboard.index',
+    ]);
+// Search by ticket number
+Route::get('ticket/{ticketid}', [
+    'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
+    'as'        => 'search.ticketbyid',
+]);
+
+
+>>>>>>> fb134c027fb77aa0c0a608f1052fa7aee95e1745
 
 });

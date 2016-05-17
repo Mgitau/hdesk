@@ -9,8 +9,8 @@
 
         @if(!$ticket)
 
-            <div class="alert alert-info">
-		      <p>No ticket found, sorry</p>
+          <div class="alert alert-info">
+		          <p>No ticket found, sorry</p>
 	       </div>
 
         @else

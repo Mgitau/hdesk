@@ -3,11 +3,8 @@
 namespace Hdesk\Http\Controllers;
 
 use Mail;
-
 use Illuminate\Http\Request;
-
 use Hdesk\Http\Requests;
-
 use Hdesk\Models\Ticket;
 
 class TicketController extends Controller
@@ -42,19 +39,17 @@ class TicketController extends Controller
         ]);
         $ticketnumber =$request->input('ticket_no');
 
-//Email not working on windows environment-- uncomment on linux
-
        //Send submitted ticket in an email
-      //  Mail::send('ticket.email', ['ticket' => $ticket], function($message) use ($ticket){
-      //      $message->to($ticket->email, $ticket->name)
-      //              ->subject($ticket->ticket_no)
-      //              ->bcc('it@triad.co.ke', 'Triad IT Dpartment');
-      //  });
+       Mail::send('ticket.email', ['ticket' => $ticket], function($message) use ($ticket){
+           $message->to($ticket->email, $ticket->name)
+                   ->subject($ticket->ticket_no)
+                   ->bcc('it@triad.co.ke', 'Triad IT Dpartment');
+       });
 
 
 
 
-       return redirect()->route('home')->with('info', 'Your ticket has been successfully submitted! Ticket ID: <a href'.$ticketnumber);
+       return redirect()->route('home')->with('info', 'Your ticket has been successfully submitted! Ticket ID:'.$ticketnumber);
    }
 
 
