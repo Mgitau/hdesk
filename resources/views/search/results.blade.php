@@ -2,7 +2,6 @@
 
 @section('content')
 
-{{dd($ticket)}}
 
 <div class="container">
 

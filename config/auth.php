@@ -67,13 +67,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Hdesk\User::class,
+            'model' => Hdesk\Models\User::class,
+            //'model' => Hdesk\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
+
     ],
 
     /*

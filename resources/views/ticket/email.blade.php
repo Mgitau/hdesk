@@ -1,3 +1,6 @@
+<p>Email sent</p>
+
+<!--
 
 <html>
     <head>
@@ -36,3 +39,4 @@
     </body>
 </html>    
             
+-->

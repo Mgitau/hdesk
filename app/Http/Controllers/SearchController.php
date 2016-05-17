@@ -14,7 +14,7 @@ class SearchController extends Controller
     //display the search page
 	public function getSearch()
 	{
-		return view ('search.ticket');
+		return view ('search.ticketsearch');
 	}
 
 
@@ -28,7 +28,7 @@ class SearchController extends Controller
         //Check if the ticket_id was supplied in the form
        if(!$ticket_id)
        {
-           return redirect()->route('search.ticket');
+           return redirect()->route('search.ticketsearch');
        }
 
         //Perform search query on Database
@@ -38,8 +38,17 @@ class SearchController extends Controller
 
        return view('search.results')->with('ticket', $ticket);
 
-
-
     }
+
+		public function getTicketById($ticketid)
+		{
+
+			$ticket = DB::table('tickets')->where('ticket_no','LIKE', "%{$ticketid}%")->first();
+
+			//dd($ticket);
+
+		 return view('search.results')->with('ticket', $ticket);
+
+		}
 
 }

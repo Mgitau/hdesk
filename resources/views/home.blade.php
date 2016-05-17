@@ -12,7 +12,7 @@
 				<div class="panel-body">
 					<a href="{{Route('ticket.newticket')}}" class="btn btn-default btn-md btn-block">SUBMIT A TICKET</a>
 					<br>
-					<a href="{{Route('search.ticket')}}" class="btn btn-default btn-md btn-block">VIEW EXISTING TICKET</a>
+					<a href="{{Route('search.ticketsearch')}}" class="btn btn-default btn-md btn-block">VIEW EXISTING TICKET</a>
 				</div>
 
 			</div> <!-- end panel-default -->
