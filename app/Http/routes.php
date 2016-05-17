@@ -49,7 +49,6 @@ Route::group(['middleware' => ['web']], function (){
         'as'    => 'search.results',
     ]);
 
-<<<<<<< HEAD
 		Route::get('ticket/{ticketid}', [
 			'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
 			'as'		=> 'search.ticketbyid',
@@ -111,7 +110,7 @@ Route::group(['middleware' => ['web']], function (){
 		return redirect()->route('home')->with('info', 'This is an alert');
 	});
 
-=======
+
 
 
         /**
@@ -148,22 +147,23 @@ Route::group(['middleware' => ['web']], function (){
         return redirect()->route('home')->with('info', 'This is an alert');
     });
 
+
 });
 
 
 //Routes Accessed only by being logged in routes
 
 Route::group(['middleware' => 'admin'], function (){
-    Route::get('admin/new',[
-        'uses'  => '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
-        'as'        => 'admin.newadmin',
+  Route::get('admin/new',[
+      'uses'  => '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
+      'as'        => 'admin.newadmin',
 
-    ]);
+  ]);
 
-    Route::post('admin/new',[
-        'uses'  => '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
+  Route::post('admin/new',[
+      'uses'  => '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
 
-    ]);
+  ]);
 
     Route::get('admin/signout',[
         'uses'  => '\Hdesk\Http\Controllers\AuthController@getSignOut',
@@ -183,7 +183,5 @@ Route::get('ticket/{ticketid}', [
     'as'        => 'search.ticketbyid',
 ]);
 
-
->>>>>>> fb134c027fb77aa0c0a608f1052fa7aee95e1745
 
 });
