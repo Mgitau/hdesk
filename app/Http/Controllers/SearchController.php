@@ -51,41 +51,23 @@ class SearchController extends Controller
 
 
 		public function getDashboardSearch(Request $request){
-			//dd('Result');
-
-			$page = $request->input('page', 1);
-
-			$paginate = 15;
-
 			$searchItem = $request->input('searchItem');
 
 			if(!$searchItem){
-				return redirect()->Route('dashboard.index')->with('info', 'Enter a search value');
+				$this->validate($request, ['searchItem'	=> 'required']);
 			}
 
-			$name = DB::table('tickets')->where('name', 'LIKE', "%{$searchItem}%");
-			$email = DB::table('tickets')->where('email', 'LIKE', "%{$searchItem}%");
-			$subject = DB::table('tickets')->where('subject', 'LIKE', "%{$searchItem}%");
-			$tickets = DB::table('tickets')->where('ticket_no', 'LIKE', "%{$searchItem}%" )
-																			->union($name)
-																			->union($email)
-																			->union($subject)
-																			->get();
+
+			$searchItem = $request->input('searchItem');
+
+			$tickets = DB::table('tickets')->where('name', 'LIKE', "%{$searchItem}%")
+																		->orWhere('email', 'LIKE', "%{$searchItem}%")
+																		->orWhere('subject', 'LIKE', "%{$searchItem}%")
+																		->orwhere('ticket_no', 'LIKE', "%{$searchItem}%" )
+																		->get();
+																		//->paginate(5);
 
 			return view('dashboard.search')->with('tickets', $tickets);
-/**
-* @Todo Implement custom pagination below
-*/
-			// $results = DB::table('tickets')->where('ticket_no', 'LIKE', "%{$searchItem}%" )
-			// 																->union($name)
-			// 																->union($email)
-			// 																->union($subject)
-			// 																->get();
-
-			// $slice = array_slice($results, $paginate * ($page -1), $paginate);
-			// $tickets = new LengthAwarePaginator ($slice, count($results), $paginate);
-			//
-		  // return view('dashboard.index', compact('tickets'))->with('tickets', $tickets);
 
 		}
 

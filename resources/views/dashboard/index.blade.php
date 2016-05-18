@@ -18,8 +18,12 @@
               </select>
 
               <form class="navbar-form navbar-right" action="{{ Route('dashboard.search') }}"role="search">
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('searchItem') ? ' has-error': '' }}">
                   <input type="text" class="form-control"  name="searchItem" placeholder="Search">
+
+									@if($errors->has('searchItem'))
+											<span class="help-block">{{ $errors->first('searchItem') }}</span>
+									@endif()
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>
               </form>
