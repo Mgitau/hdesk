@@ -5,6 +5,7 @@ namespace Hdesk\Http\Controllers;
 use DB;
 use Hdesk\Models\Ticket;
 use Illuminate\Http\Request;
+use  Illuminate\Pagination\LengthAwarePaginator ;
 
 class SearchController extends Controller
 {
@@ -45,6 +46,29 @@ class SearchController extends Controller
 			//dd($ticket);
 
 		 return view('search.results')->with('ticket', $ticket);
+
+		}
+
+
+		public function getDashboardSearch(Request $request){
+			$searchItem = $request->input('searchItem');
+
+			if(!$searchItem){
+				//$this->validate($request, ['searchItem'	=> 'required']);
+				redirect()->Route('dashboard.index')->with('info', 'Enter search value');
+			}
+
+
+			$searchItem = $request->input('searchItem');
+
+			$tickets = DB::table('tickets')->where('name', 'LIKE', "%{$searchItem}%")
+																		->orWhere('email', 'LIKE', "%{$searchItem}%")
+																		->orWhere('subject', 'LIKE', "%{$searchItem}%")
+																		->orwhere('ticket_no', 'LIKE', "%{$searchItem}%" )
+																		->get();
+																		//->paginate(5);
+
+			return view('dashboard.search')->with('tickets', $tickets);
 
 		}
 
