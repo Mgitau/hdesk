@@ -5,6 +5,7 @@ namespace Hdesk\Http\Controllers;
 use DB;
 use Hdesk\Models\Ticket;
 use Illuminate\Http\Request;
+use  Illuminate\Pagination\LengthAwarePaginator ;
 
 class SearchController extends Controller
 {
@@ -45,6 +46,46 @@ class SearchController extends Controller
 			//dd($ticket);
 
 		 return view('search.results')->with('ticket', $ticket);
+
+		}
+
+
+		public function getDashboardSearch(Request $request){
+			//dd('Result');
+
+			$page = $request->input('page', 1);
+
+			$paginate = 15;
+
+			$searchItem = $request->input('searchItem');
+
+			if(!$searchItem){
+				return redirect()->Route('dashboard.index')->with('info', 'Enter a search value');
+			}
+
+			$name = DB::table('tickets')->where('name', 'LIKE', "%{$searchItem}%");
+			$email = DB::table('tickets')->where('email', 'LIKE', "%{$searchItem}%");
+			$subject = DB::table('tickets')->where('subject', 'LIKE', "%{$searchItem}%");
+			$tickets = DB::table('tickets')->where('ticket_no', 'LIKE', "%{$searchItem}%" )
+																			->union($name)
+																			->union($email)
+																			->union($subject)
+																			->get();
+
+			return view('dashboard.search')->with('tickets', $tickets);
+/**
+* @Todo Implement custom pagination below
+*/
+			// $results = DB::table('tickets')->where('ticket_no', 'LIKE', "%{$searchItem}%" )
+			// 																->union($name)
+			// 																->union($email)
+			// 																->union($subject)
+			// 																->get();
+
+			// $slice = array_slice($results, $paginate * ($page -1), $paginate);
+			// $tickets = new LengthAwarePaginator ($slice, count($results), $paginate);
+			//
+		  // return view('dashboard.index', compact('tickets'))->with('tickets', $tickets);
 
 		}
 

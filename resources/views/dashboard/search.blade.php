@@ -41,7 +41,7 @@
 		@else
 
     <!-- include Ticket Partial -->
-		@include('dashboard.partials.ticketblock')
+		@include('dashboard.partials.searchresults')
 
 
 </div><!--end container-->
