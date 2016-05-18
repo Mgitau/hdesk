@@ -54,7 +54,8 @@ class SearchController extends Controller
 			$searchItem = $request->input('searchItem');
 
 			if(!$searchItem){
-				$this->validate($request, ['searchItem'	=> 'required']);
+				//$this->validate($request, ['searchItem'	=> 'required']);
+				redirect()->Route('dashboard.index')->with('info', 'Enter search value');
 			}
 
 

@@ -22,7 +22,7 @@
                   <input type="text" class="form-control"  name="searchItem" placeholder="Search">
 
 									@if($errors->has('searchItem'))
-											<span class="help-block">{{ $errors->first('searchItem') }}</span>
+											<span class="help-block">{{ $errors->first('name') }}</span>
 									@endif()
                 </div>
                 <button type="submit" class="btn btn-default">Search</button>

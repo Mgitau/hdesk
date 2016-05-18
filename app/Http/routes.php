@@ -50,11 +50,6 @@ Route::group(['middleware' => ['web']], function (){
     ]);
 
 
-    Route::get('/admin/dashboard/search',[
-      'uses'  => '\Hdesk\Http\Controllers\SearchController@getDashboardSearch',
-      'as'    => 'dashboard.search',
-    ]);
-
     /**
     + Admin
     */
@@ -124,6 +119,12 @@ Route::get('ticket/{ticketid}', [
     'as'        => 'search.ticketbyid',
 ]);
 
-
+  /**
+  + Search
+  */
+  Route::get('/admin/dashboard/search',[
+    'uses'  => '\Hdesk\Http\Controllers\SearchController@getDashboardSearch',
+    'as'    => 'dashboard.search',
+  ]);
 
 });
