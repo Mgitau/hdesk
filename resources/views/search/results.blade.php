@@ -23,7 +23,7 @@
           @if(Auth::check())
           <span class="pull-right">
             <a class="btn btn-success" href="#" role="button">Mark Complete</a>
-            <a class="btn btn-primary" href="{{Route('ticket.edit', ['ticket_no' => $ticket->ticket_no])}}" role="button">Edit</a>
+            <a class="btn btn-primary" href="{{Route('ticket.edit', ['ticket_id' => $ticket->id])}}" role="button">Edit</a>
             <a class="btn btn-danger" href="#" role="button">Delete</a>
           </span>
           @endif

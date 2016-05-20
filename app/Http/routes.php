@@ -179,17 +179,17 @@ Route::group(['middleware' => 'admin'], function (){
     /**
     + Ticket edit
     */
-    Route::get('dashboard/ticket/edit/{ticket_no}', [
+    Route::get('dashboard/ticket/edit/{ticket_id}', [
             'uses'  => '\Hdesk\Http\Controllers\TicketController@getTicketEdit',
             'as'    => 'ticket.edit',
         ]);
 
-    Route::post('dashboard/ticket/edit/{ticket_no}', [
+    Route::post('dashboard/ticket/edit/{ticket_id}', [
             'uses'  => '\Hdesk\Http\Controllers\TicketController@postTicketEdit',
 
         ]);
 
-    // Search by ticket number
+    // Search by ticket id
     Route::get('dashboard/ticket/{ticketid}', [
         'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
         'as'        => 'search.ticketbyid',

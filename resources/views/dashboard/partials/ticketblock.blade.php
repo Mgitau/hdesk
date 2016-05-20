@@ -13,13 +13,19 @@
       <b>Priority</b>
     </td>
     <td>
+      <b>Staus</b>
+    </td>
+    <td>
       <b>Category</b>
     </td>
     <td>
       <b>Creator</b>
     </td>
     <td>
-      <b>Date</b>
+      <b>Date Created</b>
+    </td>
+    <td>
+      <b>Date Updated</b>
     </td>
   </tr>
 
@@ -29,13 +35,16 @@
       {{$ticket->id}}
     </td>
     <td>
-      <a href="{{route('search.ticketbyid', ['ticketid' => $ticket->ticket_no])}}">{{$ticket->ticket_no}}</a>
+      <a href="{{route('search.ticketbyid', ['ticketid' => $ticket->id])}}">{{$ticket->ticket_no}}</a>
     </td>
     <td>
       {{$ticket->subject}}
     </td>
     <td>
       {{$ticket->priority}}
+    </td>
+    <td>
+      {{$ticket->status}}
     </td>
     <td>
       {{$ticket->category}}
@@ -45,6 +54,9 @@
     </td>
     <td>
       {{$ticket->created_at}}
+    </td>
+    <td>
+      {{$ticket->updated_at}}
     </td>
   </tr>
 

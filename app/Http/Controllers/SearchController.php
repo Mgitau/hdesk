@@ -41,7 +41,7 @@ class SearchController extends Controller
 		public function getTicketById($ticketid)
 		{
 
-			$ticket = DB::table('tickets')->where('ticket_no','LIKE', "%{$ticketid}%")->first();
+			$ticket = DB::table('tickets')->where('id','LIKE', "%{$ticketid}%")->first();
 
 			//dd($ticket);
 

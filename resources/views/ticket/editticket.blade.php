@@ -10,7 +10,7 @@
 
     <div class="col-lg-12">
 
-      <form class="form-horizontal" role="form" method="post" action="{{ route('ticket.edit', ['ticket_no' => $ticket->ticket_no] ) }}">
+      <form class="form-horizontal" role="form" method="post" action="{{ route('ticket.edit', ['ticket_id' => $ticket->id] ) }}">
 
         <div class="form-group{{ $errors->has('name') ? ' has-error': '' }}">
 
@@ -139,7 +139,8 @@
         <button type="submit" class="btn btn-primary  col-lg-offset-2">Edit Ticket</button>
 
                   <!-- <input type="hidden" name="status" value="Open"> -->
-                  <input type="hidden" name="ticket_no" value="{{uniqid('Triad_')}}">
+                  <input type="hidden" name="id" value="{{$ticket->id}}">
+                  <!-- <input type="hidden" name="ticket_no" value="{{uniqid('Triad_')}}"> -->
 <!--                    CSRF -->
                   {{ csrf_field() }}
 
