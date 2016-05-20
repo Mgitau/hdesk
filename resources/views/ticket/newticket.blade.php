@@ -133,6 +133,7 @@
 
 					<button type="submit" class="btn btn-primary  col-lg-offset-2">Submit Ticket</button>
 
+										<input type="hidden" name="status" value="Open">
                     <input type="hidden" name="ticket_no" value="{{uniqid('Triad_')}}">
 <!--                    CSRF -->
                     {{ csrf_field() }}

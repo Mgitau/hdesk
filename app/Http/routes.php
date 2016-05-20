@@ -54,8 +54,8 @@ Route::group(['middleware' => ['web']], function (){
 			'as'		=> 'search.ticketbyid',
 		]);
 
-		/**
-		* Admin
+    /**
+		+ Admin
 		*/
 		Route::post('admin/new',[
 			'uses'	=> '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
@@ -75,8 +75,6 @@ Route::group(['middleware' => ['web']], function (){
 			'uses'	=> '\Hdesk\Http\Controllers\AuthController@postLogin',
 			'middleware'	=> ['guest'],
 		]);
-
-
 
 		Route::get('admin/signout',[
 			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getSignOut',
@@ -115,13 +113,13 @@ Route::group(['middleware' => ['web']], function (){
     /**
     + Admin
     */
-  Route::get('admin/login',[
+  Route::get('dashboard/login',[
       'uses'  => '\Hdesk\Http\Controllers\AuthController@getLogin',
       'as'        => 'admin.login',
       'middleware'    => ['guest'],
   ]);
 
-  Route::post('admin/login',[
+  Route::post('dashboard/login',[
       'uses'  => '\Hdesk\Http\Controllers\AuthController@postLogin',
       'middleware'    => ['guest'],
   ]);
@@ -150,16 +148,17 @@ Route::group(['middleware' => ['web']], function (){
 });
 
 
-//Routes Accessed only by being logged in routes
+/****************DASHBOARD***********************/
 
 Route::group(['middleware' => 'admin'], function (){
-  Route::get('admin/new',[
+
+  Route::get('dashboard/admin/new',[
       'uses'  => '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
       'as'        => 'admin.newadmin',
 
   ]);
 
-  Route::post('admin/new',[
+  Route::post('dashboard/admin/new',[
       'uses'  => '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
 
   ]);
@@ -172,15 +171,29 @@ Route::group(['middleware' => 'admin'], function (){
     /**
     + Dashboard
     */
-    Route::get('admin/dashboard',[
+    Route::get('dashboard',[
         'uses'  => '\Hdesk\Http\Controllers\DashboardController@getDashboard',
         'as'        => 'dashboard.index',
     ]);
-// Search by ticket number
-Route::get('ticket/{ticketid}', [
-    'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
-    'as'        => 'search.ticketbyid',
-]);
+
+    /**
+    + Ticket edit
+    */
+    Route::get('dashboard/ticket/edit/{ticket_id}', [
+            'uses'  => '\Hdesk\Http\Controllers\TicketController@getTicketEdit',
+            'as'    => 'ticket.edit',
+        ]);
+
+    Route::post('dashboard/ticket/edit/{ticket_id}', [
+            'uses'  => '\Hdesk\Http\Controllers\TicketController@postTicketEdit',
+
+        ]);
+
+    // Search by ticket id
+    Route::get('dashboard/ticket/{ticketid}', [
+        'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
+        'as'        => 'search.ticketbyid',
+    ]);
 
   /**
   + Search
