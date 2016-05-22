@@ -85,7 +85,7 @@ class TicketController extends Controller
         ]);
 
         return redirect()
-              ->route('ticket.edit', ['ticket_id' => $ticket_id])
+              ->route('search.ticketbyid', ['ticket_id' => $ticket_id])
               ->with('info', 'Ticket has been edited');
 
 

@@ -29,7 +29,7 @@
       {{$ticket->id}}
     </td>
     <td>
-      <a href="{{route('search.ticketbyid', ['ticketid' => $ticket->ticket_no])}}">{{$ticket->ticket_no}}</a>
+      <a href="{{route('search.ticketbyid', ['ticketid' => $ticket->id])}}">{{$ticket->ticket_no}}</a>
     </td>
     <td>
       {{$ticket->subject}}

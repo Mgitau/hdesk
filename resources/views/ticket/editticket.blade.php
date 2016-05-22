@@ -136,7 +136,7 @@
 
 
 
-        <button type="submit" class="btn btn-primary  col-lg-offset-2">Edit Ticket</button>
+        <button type="submit" class="btn btn-primary  col-lg-offset-2">Update Ticket</button>
 
                   <!-- <input type="hidden" name="status" value="Open"> -->
                   <input type="hidden" name="id" value="{{$ticket->id}}">
