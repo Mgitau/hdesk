@@ -96,10 +96,10 @@ Route::group(['middleware' => ['web']], function (){
 		/**
 		+ Dashboard
 		*/
-		Route::get('admin/dashboard',[
-			'uses'	=> '\Hdesk\Http\Controllers\DashboardController@getDashboard',
-			'as'		=> 'dashboard.index',
-		]);
+		// Route::get('admin/dashboard',[
+		// 	'uses'	=> '\Hdesk\Http\Controllers\DashboardController@getDashboard',
+		// 	'as'		=> 'dashboard.index',
+		// ]);
 
 	/**
 	+ Alerts
@@ -195,9 +195,17 @@ Route::group(['middleware' => 'admin'], function (){
         'as'        => 'search.ticketbyid',
     ]);
 
-  /**
-  + Search
-  */
+    /**
+    + Ticket delete
+    */
+    Route::get('dashboard/ticket/delete/{ticket_id}', [
+        'uses' => '\Hdesk\Http\Controllers\TicketController@getTicketDelete',
+        'as'    => 'ticket.delete',
+      ]);
+
+    /**
+    + Search
+    */
   Route::get('/admin/dashboard/search',[
     'uses'  => '\Hdesk\Http\Controllers\SearchController@getDashboardSearch',
     'as'    => 'dashboard.search',

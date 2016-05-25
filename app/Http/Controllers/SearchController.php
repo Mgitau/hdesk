@@ -23,14 +23,15 @@ class SearchController extends Controller
         $ticket_id = $request->input('ticket_id');
 
 
-        //Check if the ticket_id was supplied in th e form
+        //Check if the ticket_id was supplied in the form
        if(!$ticket_id)
        {
            return redirect()->route('search.ticketsearch');
        }
 
         //Perform search query on Database
-        $ticket = DB::table('tickets')->where('ticket_no','LIKE', "%{$ticket_id}%")->first();
+        //$ticket = DB::table('tickets')->where('ticket_no','LIKE', "%{$ticket_id}%")->first();
+				$ticket = DB::table('tickets')->whereNull('deleted_at')->where('ticket_no', "%{$ticket_id}%")->first();
 
         //dd($ticket);
 
@@ -41,7 +42,8 @@ class SearchController extends Controller
 		public function getTicketById($ticketid)
 		{
 
-			$ticket = DB::table('tickets')->where('id','LIKE', "%{$ticketid}%")->first();
+			//$ticket = DB::table('tickets')->where('id','LIKE', "%{$ticketid}%")->first();
+			$ticket = DB::table('tickets')->whereNull('deleted_at')->where('id','LIKE', "%{$ticketid}%")->first();
 
 			//dd($ticket);
 
