@@ -70,8 +70,6 @@ class TicketController extends Controller
 
         $ticket_id = $request->input('id');
 
-        //dd($ticket_id);
-
         DB::table('tickets')
         ->where('id', "{$ticket_id}")
         ->update([
@@ -88,7 +86,16 @@ class TicketController extends Controller
               ->route('search.ticketbyid', ['ticket_id' => $ticket_id])
               ->with('info', 'Ticket has been edited');
 
+     }
 
+     public function getTicketDelete($id){
+      $ticket = Ticket::find($id);
+      $ticket->delete();
+
+
+
+      return redirect()->route('dashboard.index')->with('info', 'Ticket has been deleted');
+      //return back()->with('info', 'Ticket has been deleted');
 
 
      }

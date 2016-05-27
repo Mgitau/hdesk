@@ -21,8 +21,6 @@ Route::group(['middleware' => ['web']], function (){
             'uses'  => '\Hdesk\Http\Controllers\HomeController@index',
             'as'    => 'home',
         ]);
-
-
     /**
     + Ticket
     */
@@ -54,17 +52,6 @@ Route::group(['middleware' => ['web']], function (){
 			'as'		=> 'search.ticketbyid',
 		]);
 
-    /**
-		+ Admin
-		*/
-		Route::post('admin/new',[
-			'uses'	=> '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
-	]);
-			Route::get('admin/new',[
-				'uses'	=> '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
-				'as'		=> 'admin.newadmin',
-	]);
-
 		Route::get('admin/login',[
 			'uses'	=> '\Hdesk\Http\Controllers\AuthController@getLogin',
 			'as'		=> 'admin.login',
@@ -93,13 +80,6 @@ Route::group(['middleware' => ['web']], function (){
 			'uses'	=> '\Hdesk\Http\Controllers\AgentController@postCreateAgent',
 		]);
 
-		/**
-		+ Dashboard
-		*/
-		Route::get('admin/dashboard',[
-			'uses'	=> '\Hdesk\Http\Controllers\DashboardController@getDashboard',
-			'as'		=> 'dashboard.index',
-		]);
 
 	/**
 	+ Alerts
@@ -107,8 +87,6 @@ Route::group(['middleware' => ['web']], function (){
 	Route::get('/alert', function () {
 		return redirect()->route('home')->with('info', 'This is an alert');
 	});
-
-
 
     /**
     + Admin
@@ -125,17 +103,17 @@ Route::group(['middleware' => ['web']], function (){
   ]);
 
 
-  /**
-  + Agent
-  */
-  Route::get('agent/newagent',[
-      'uses'  => '\Hdesk\Http\Controllers\AgentController@getCreateAgent',
-      'as'        => 'agent.createagent',
-  ]);
+    /**
+    + Agent
+    */
+    Route::get('agent/newagent',[
+        'uses'  => '\Hdesk\Http\Controllers\AgentController@getCreateAgent',
+        'as'        => 'agent.createagent',
+    ]);
 
-  Route::post('agent/newadmin',[
-      'uses'  => '\Hdesk\Http\Controllers\AgentController@postCreateAgent',
-  ]);
+    Route::post('agent/newadmin',[
+        'uses'  => '\Hdesk\Http\Controllers\AgentController@postCreateAgent',
+    ]);
 
     /**
     + Alerts
@@ -151,21 +129,18 @@ Route::group(['middleware' => ['web']], function (){
 /****************DASHBOARD***********************/
 
 Route::group(['middleware' => 'admin'], function (){
+    /**
+    + Admin
+    */
+    Route::get('dashboard/admin/new',[
+        'uses'  => '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
+        'as'        => 'admin.newadmin',
 
-  Route::get('dashboard/admin/new',[
-      'uses'  => '\Hdesk\Http\Controllers\AuthController@getNewAdmin',
-      'as'        => 'admin.newadmin',
+    ]);
 
-  ]);
+    Route::post('dashboard/admin/new',[
+        'uses'  => '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
 
-  Route::post('dashboard/admin/new',[
-      'uses'  => '\Hdesk\Http\Controllers\AuthController@postNewAdmin',
-
-  ]);
-
-    Route::get('admin/signout',[
-        'uses'  => '\Hdesk\Http\Controllers\AuthController@getSignOut',
-        'as'        => 'admin.signout',
     ]);
 
     /**
@@ -195,13 +170,21 @@ Route::group(['middleware' => 'admin'], function (){
         'as'        => 'search.ticketbyid',
     ]);
 
-  /**
-  + Search
-  */
-  Route::get('/admin/dashboard/search',[
-    'uses'  => '\Hdesk\Http\Controllers\SearchController@getDashboardSearch',
-    'as'    => 'dashboard.search',
-  ]);
+    /**
+    + Ticket delete
+    */
+    Route::get('dashboard/ticket/delete/{ticket_id}', [
+        'uses' => '\Hdesk\Http\Controllers\TicketController@getTicketDelete',
+        'as'    => 'ticket.delete',
+      ]);
+
+    /**
+    + Search
+    */
+    Route::get('/admin/dashboard/search',[
+      'uses'  => '\Hdesk\Http\Controllers\SearchController@getDashboardSearch',
+      'as'    => 'dashboard.search',
+    ]);
 
 
 });

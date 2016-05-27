@@ -9,44 +9,33 @@ use  Illuminate\Pagination\LengthAwarePaginator ;
 
 class SearchController extends Controller
 {
-    //display the search page
-	public function getSearch()
-	{
-		return view ('search.ticketsearch');
-	}
+		public function getSearch()
+		{
+			return view ('search.ticketsearch');
+		}
 
-
-    //dispay the results after searching
     public function getResults(Request $request)
     {
-        //Get ticket_id from the search from
-        $ticket_id = $request->input('ticket_id');
+			$ticket_id = $request->input('ticket_id');
 
+     if(!$ticket_id)
+     {
+         return redirect()->route('search.ticketsearch');
+     }
 
-        //Check if the ticket_id was supplied in th e form
-       if(!$ticket_id)
-       {
-           return redirect()->route('search.ticketsearch');
-       }
+      //Perform search query on Database
+      //$ticket = DB::table('tickets')->where('ticket_no','LIKE', "%{$ticket_id}%")->first();
+			$ticket = DB::table('tickets')->whereNull('deleted_at')->where('ticket_no', "%{$ticket_id}%")->first();
 
-        //Perform search query on Database
-        $ticket = DB::table('tickets')->where('ticket_no','LIKE', "%{$ticket_id}%")->first();
-
-        //dd($ticket);
-
-       return view('search.results')->with('ticket', $ticket);
+     return view('search.results')->with('ticket', $ticket);
 
     }
 
 		public function getTicketById($ticketid)
 		{
-
-			$ticket = DB::table('tickets')->where('id','LIKE', "%{$ticketid}%")->first();
-
-			//dd($ticket);
-
-		 return view('search.results')->with('ticket', $ticket);
-
+			//$ticket = DB::table('tickets')->where('id','LIKE', "%{$ticketid}%")->first();
+			$ticket = DB::table('tickets')->whereNull('deleted_at')->where('id','LIKE', "%{$ticketid}%")->first();
+			return view('search.results')->with('ticket', $ticket);
 		}
 
 
@@ -54,8 +43,7 @@ class SearchController extends Controller
 			$searchItem = $request->input('searchItem');
 
 			if(!$searchItem){
-				//$this->validate($request, ['searchItem'	=> 'required']);
-				redirect()->Route('dashboard.index')->with('info', 'Enter search value');
+				redirect()->Route('dashboard.index')->with('alert', 'Enter search value');
 			}
 
 
