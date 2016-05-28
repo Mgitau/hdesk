@@ -53,6 +53,7 @@ class SearchController extends Controller
 																		->orWhere('email', 'LIKE', "%{$searchItem}%")
 																		->orWhere('subject', 'LIKE', "%{$searchItem}%")
 																		->orwhere('ticket_no', 'LIKE', "%{$searchItem}%" )
+																		->whereNull('deleted_at')
 																		->get();
 																		//->paginate(5);
 
