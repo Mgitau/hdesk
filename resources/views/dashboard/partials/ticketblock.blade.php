@@ -23,10 +23,10 @@
         <b>Creator</b>
       </td>
       <td>
-        <b>Date Created</b>
+        <b>Created</b>
       </td>
       <td>
-        <b>Date Updated</b>
+        <b>Updated</b>
       </td>
     </tr>
 
@@ -54,10 +54,10 @@
         {{$ticket->name}}
       </td>
       <td>
-        {{$ticket->created_at}}
+        {{ Carbon\Carbon::createFromTimestamp(strtotime($ticket->created_at))->diffForHumans() }}
       </td>
       <td>
-        {{$ticket->updated_at}}
+        {{ Carbon\Carbon::createFromTimestamp(strtotime($ticket->updated_at))->diffForHumans() }}
       </td>
     </tr>
 

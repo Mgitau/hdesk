@@ -12,6 +12,7 @@
               <option class="pending_ticket">Pending Tickets</option>
               <option class="closed_ticket">Closed Tickets</option>
             </select>
+            <button type="button" class="btn btn-success" name="button">Apply</button>
 
             <form class="navbar-form navbar-right" action="{{ Route('dashboard.search') }}"role="search">
               <div class="form-group{{ $errors->has('searchItem') ? ' has-error': '' }}">

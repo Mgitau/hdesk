@@ -7,6 +7,8 @@ use DB;
 use Illuminate\Http\Request;
 use Hdesk\Models\Ticket;
 use Hdesk\Http\Requests;
+use Carbon\Carbon;
+
 
 class DashboardController extends Controller
 {
