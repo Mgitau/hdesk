@@ -186,5 +186,14 @@ Route::group(['middleware' => 'admin'], function (){
       'as'    => 'dashboard.search',
     ]);
 
+    /**
+    + Trash
+    */
+
+    Route::get('dashboard/trash',[
+      'uses'  => '\Hdesk\Http\Controllers\TrashController@getTrashbin',
+      'as'    => 'dashboard.trash',
+    ]);
+
 
 });

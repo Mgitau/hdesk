@@ -18,6 +18,7 @@
 
 			<li><a href="{{Route('dashboard.index')}}">Dashboard</a></li>
 			<li><a href="{{Route('admin.newadmin')}}">New Admin</a></li>
+			<li><a href="{{Route('dashboard.trash')}}">Trash</a></li>
 			<li><a href="#">{{Auth::user()->getFirstNameOrUsername()}}</a></li>
 			<li><a href="{{Route('admin.signout')}}">Sign Out</a></li>
 		@endif
