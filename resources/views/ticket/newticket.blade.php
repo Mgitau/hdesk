@@ -30,7 +30,7 @@
 
 					<div class="form-group{{ $errors->has('email') ? ' has-error': '' }}">
 
-						<label for="name" class="col-lg-2 control-label">Email</label>
+						<label for="name" class="col-lg-2 control-label">* Email</label>
 
 						<div class="col-lg-8">
 
@@ -48,7 +48,7 @@
 
 					<div class="form-group">
 
-						<label for="name" class="col-lg-2 control-label">Category</label>
+						<label for="name" class="col-lg-2 control-label">* Category</label>
 
 						<div class="dropdown col-lg-8">
 
@@ -67,7 +67,7 @@
 
 					<div class="form-group">
 
-						<label for="name" class="col-lg-2 control-label">Priority</label>
+						<label for="name" class="col-lg-2 control-label">* Priority</label>
 
 						<div class="dropdown col-lg-8">
 
@@ -86,7 +86,7 @@
 
 					<div class="form-group{{ $errors->has('subject') ? ' has-error': '' }}">
 
-						<label for="subject" class="col-lg-2 control-label">Subjects</label>
+						<label for="subject" class="col-lg-2 control-label">* Subjects</label>
 
 						<div class="col-lg-8">
 
@@ -101,7 +101,7 @@
 
 					<div class="form-group {{ $errors->has('message') ? ' has-error': '' }}">
 
-						<label for="message" class="col-lg-2 control-label">Message</label>
+						<label for="message" class="col-lg-2 control-label">* Message</label>
 
 						<div class="col-lg-8">
 
@@ -135,6 +135,9 @@
 
 										<input type="hidden" name="status" value="Open">
                     <input type="hidden" name="ticket_no" value="{{uniqid('Triad_')}}">
+										<p>
+											* Required fields
+										</p>
 <!--                    CSRF -->
                     {{ csrf_field() }}
 

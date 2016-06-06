@@ -7,14 +7,18 @@
       <div class="container">
         <div class="nav navbar-nav">
 
-            <select class="selectpicker " name="ticket-status">
-              <option class="open_ticket">Open Tickets</option>
-              <option class="pending_ticket">Pending Tickets</option>
-              <option class="closed_ticket">Closed Tickets</option>
-            </select>
-            <button type="button" class="btn btn-success" name="button">Apply</button>
+          <form class="navbar-form navbar-left" action="#" method="post">
+            <div class="form-group">
+              <select class="selectpicker " name="ticket-status">
+                <option class="open_ticket">Open Tickets</option>
+                <option class="pending_ticket">Pending Tickets</option>
+                <option class="closed_ticket">Closed Tickets</option>
+              </select>
+              <button type="button" class="btn btn-success" name="button">Apply</button>
+            </div>
+          </form>
 
-            <form class="navbar-form navbar-right" action="{{ Route('dashboard.search') }}"role="search">
+          <form class="navbar-form navbar-right" action="{{ Route('dashboard.search') }}"role="search">
               <div class="form-group{{ $errors->has('searchItem') ? ' has-error': '' }}">
                 <input type="text" class="form-control"  name="searchItem" placeholder="Search">
 

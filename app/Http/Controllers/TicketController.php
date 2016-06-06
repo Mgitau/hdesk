@@ -18,7 +18,7 @@ class TicketController extends Controller
     public function postTicket(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:20',
+            'name' => 'max:20',
             'email' => 'required|email|max:255',
             'category' => 'required|max:255',
             'priority' => 'required|max:255',
@@ -91,6 +91,7 @@ class TicketController extends Controller
      public function getTicketDelete($id){
       $ticket = Ticket::find($id);
       $ticket->delete();
+
 
 
 

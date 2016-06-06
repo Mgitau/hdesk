@@ -12,8 +12,8 @@ class TrashController extends Controller
     public function getTrashbin(){
 
     // $tickets = DB::table('tickets')->whereNull('deleted_at')->orderBy('id', 'desc')->paginate(15);
-     $tickets = DB::table('tickets')->whereNotNull('deleted_at')->paginate(15);
-    //  return view('dashboard.index')->with('tickets', $tickets);
-      return view('trash.trashbin')->with('tickets', $tickets);
+    // $tickets = DB::table('tickets')->whereNotNull('deleted_at')->paginate(15);
+    $tickets = Ticket::withTrashed()->paginate(15);
+    return view('trash.trashbin')->with('tickets', $tickets);
     }
 }

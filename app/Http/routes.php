@@ -152,7 +152,7 @@ Route::group(['middleware' => 'admin'], function (){
     ]);
 
     /**
-    + Ticket edit
+    + Ticket Edit
     */
     Route::get('dashboard/ticket/edit/{ticket_id}', [
             'uses'  => '\Hdesk\Http\Controllers\TicketController@getTicketEdit',
@@ -177,6 +177,15 @@ Route::group(['middleware' => 'admin'], function (){
         'uses' => '\Hdesk\Http\Controllers\TicketController@getTicketDelete',
         'as'    => 'ticket.delete',
       ]);
+
+      /**
+      + Ticket Status
+      */
+      Route::get('dashboard/tickets/closed/{$ticket_status}', [
+        'usses' => '\Hdesk\Http\Controllers\TicketController@getclosedTickets',
+        'as'    => 'status.closed',
+      ]);
+
 
     /**
     + Search

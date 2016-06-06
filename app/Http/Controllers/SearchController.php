@@ -23,11 +23,11 @@ class SearchController extends Controller
          return redirect()->route('search.ticketsearch');
      }
 
-      //Perform search query on Database
-      //$ticket = DB::table('tickets')->where('ticket_no','LIKE', "%{$ticket_id}%")->first();
-			$ticket = DB::table('tickets')->whereNull('deleted_at')->where('ticket_no', "%{$ticket_id}%")->first();
 
-     return view('search.results')->with('ticket', $ticket);
+      //Perform search query on Database
+    $ticket = DB::table('tickets')->where('ticket_no','=', "{$ticket_id}")->first();
+
+    return view('search.results')->with('ticket', $ticket);
 
     }
 
@@ -49,14 +49,22 @@ class SearchController extends Controller
 
 			$searchItem = $request->input('searchItem');
 
-			$tickets = DB::table('tickets')->where('name', 'LIKE', "%{$searchItem}%")
+			$tickets = DB::table('tickets')->where(function($query) use ($searchItem){
+															$query->where('name', 'LIKE', "%{$searchItem}%")
+																		->orWhere('email', 'LIKE', "%{$searchItem}%")
+																		->orWhere('subject', 'LIKE', "%{$searchItem}%")
+																		->orwhere('ticket_no', 'LIKE', "%{$searchItem}%" );
+			})
+			->get();
+
+		/*	$tickets = DB::table('tickets')->where('name', 'LIKE', "%{$searchItem}%")
 																		->orWhere('email', 'LIKE', "%{$searchItem}%")
 																		->orWhere('subject', 'LIKE', "%{$searchItem}%")
 																		->orwhere('ticket_no', 'LIKE', "%{$searchItem}%" )
-																		->whereNull('deleted_at')
+																		// ->whereNull('deleted_at')
 																		->get();
 																		//->paginate(5);
-
+																		*/
 			return view('dashboard.search')->with('tickets', $tickets);
 
 		}
