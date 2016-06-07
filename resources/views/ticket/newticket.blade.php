@@ -54,9 +54,9 @@
 
                             <select class="selectpicker" name="category">
                                 <option>General</option>
-                                <option>BIM</option>
                                 <option>Support</option>
                                 <option>Printing</option>
+																<option>BIM</option>
                             </select>
 
 						</div>
