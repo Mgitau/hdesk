@@ -23,7 +23,7 @@ class TicketController extends Controller
             'category' => 'required|max:255',
             'priority' => 'required|max:255',
             'subject' => 'required|max:255',
-            'message' => 'required',
+            'message' => 'required|max:255',
             'ticket_no' => 'required',
         ]);
 
