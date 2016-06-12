@@ -1,20 +1,12 @@
-
-                <p><b>Name:</b> {{$ticket->name}}</p>
-
-                <p><b>Email:</b> {{$ticket->email}}</p>
-
-                <p><b>Subject:</b> {{$ticket->subject}}</p>
-
-
-               <p><b>Message:</b> {{$ticket->message}}</p>
-
-               <p><b>Ticket ID:</b> {{$ticket->ticket_no}}</p>
-
-                <p><b>Status:</b> {{$ticket->status}}</p>
-
-                <p><b>Category:</b> {{$ticket->category}}</p>
-
-
-               <p><b>Priority:</b> {{$ticket->priority}}</p>
-
-               <p><b>Created on:</b> {{$ticket->created_at}}</p>
+ Dear {{$ticket->name}},
+ <br><br>
+ We would like to acknowledge that we have received your request and a ticket has been created.
+ An IT support representative will be reviewing your request and will send you a personal response.
+ <br><br>
+ To view the status of the ticket please click on the ticket id
+ <a href="http://hdesk.app/results?ticket_id={{$ticket->ticket_no}}">{{$ticket->ticket_no}}</a>
+ <br><br>
+ Thank you for your patience.
+ <br><br>
+ Sincerely,<br>
+ Triad IT Department
