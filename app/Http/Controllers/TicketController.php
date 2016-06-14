@@ -5,6 +5,7 @@ namespace Hdesk\Http\Controllers;
 use Mail;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
 use Hdesk\Http\Requests;
 use Hdesk\Models\Ticket;
 
