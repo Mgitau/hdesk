@@ -10,10 +10,12 @@
 			<div class="panel panel-default">
 
 				<div class="panel-body">
-					<a href="{{Route('ticket.newticket')}}" class="btn btn-default btn-md btn-block">SUBMIT A TICKET</a>
+					<a href="{{Route('ticket.newticket')}}" class="btn btn-default btn-md btn-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> NEW SUPPORT TICKET</a>
 					<br>
-					<a href="{{Route('search.ticketsearch')}}" class="btn btn-default btn-md btn-block">VIEW EXISTING TICKET</a>
+					<a href="{{Route('search.ticketsearch')}}" class="btn btn-default btn-md btn-block"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> CHECK TICKET STATUS</a>
 				</div>
+
+
 
 			</div> <!-- end panel-default -->
 
