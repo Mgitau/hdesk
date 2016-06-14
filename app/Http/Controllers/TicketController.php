@@ -90,8 +90,8 @@ class TicketController extends Controller
      }
 
      public function getTicketDelete($id){
-      $ticket = Ticket::find($id);
-      $ticket->delete();
+      $ticket = Ticket::find($id)->delete();
+      // $ticket->delete();
 
 
 
