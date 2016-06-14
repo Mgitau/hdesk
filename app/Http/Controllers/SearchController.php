@@ -23,11 +23,9 @@ class SearchController extends Controller
          return redirect()->route('search.ticketsearch');
      }
 
+		 $ticket = \Hdesk\Models\Ticket::where('ticket_no', $ticket_id)->first();
 
-      //Perform search query on Database
-    $ticket = DB::table('tickets')->where('ticket_no','=', "{$ticket_id}")->first();
-
-    return view('search.results')->with('ticket', $ticket);
+     return view('search.results')->with('ticket', $ticket);
 
     }
 
@@ -49,7 +47,7 @@ class SearchController extends Controller
 
 			$searchItem = $request->input('searchItem');
 
-			$tickets = DB::table('tickets')->where(function($query) use ($searchItem){
+			$tickets = \Hdesk\Models\Ticket::where(function($query) use ($searchItem){
 															$query->where('name', 'LIKE', "%{$searchItem}%")
 																		->orWhere('email', 'LIKE', "%{$searchItem}%")
 																		->orWhere('subject', 'LIKE', "%{$searchItem}%")
