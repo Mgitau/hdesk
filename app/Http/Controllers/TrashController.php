@@ -10,10 +10,13 @@ use DB;
 class TrashController extends Controller
 {
     public function getTrashbin(){
-
-    // $tickets = DB::table('tickets')->whereNull('deleted_at')->orderBy('id', 'desc')->paginate(15);
-    // $tickets = DB::table('tickets')->whereNotNull('deleted_at')->paginate(15);
-    $tickets = Ticket::withTrashed()->paginate(15);
+    $tickets = Ticket::withTrashed()->orderBy('id', 'desc')->paginate(15);
     return view('trash.trashbin')->with('tickets', $tickets);
+    }
+
+    public function getTrashTicket($id){
+     $ticket = \Hdesk\Models\Ticket::find($id)->delete();
+     return redirect()->route('dashboard.index')->with('info', 'Ticket has been Trashed');
+
     }
 }

@@ -24,15 +24,14 @@ class SearchController extends Controller
      }
 
 		 $ticket = \Hdesk\Models\Ticket::where('ticket_no', $ticket_id)->first();
-
      return view('search.results')->with('ticket', $ticket);
 
     }
 
 		public function getTicketById($ticketid)
 		{
-			//$ticket = DB::table('tickets')->where('id','LIKE', "%{$ticketid}%")->first();
-			$ticket = DB::table('tickets')->whereNull('deleted_at')->where('id','LIKE', "%{$ticketid}%")->first();
+
+			$ticket = \Hdesk\Models\Ticket::where('id','LIKE', "%{$ticketid}%")->first();
 			return view('search.results')->with('ticket', $ticket);
 		}
 
@@ -54,15 +53,6 @@ class SearchController extends Controller
 																		->orwhere('ticket_no', 'LIKE', "%{$searchItem}%" );
 			})
 			->get();
-
-		/*	$tickets = DB::table('tickets')->where('name', 'LIKE', "%{$searchItem}%")
-																		->orWhere('email', 'LIKE', "%{$searchItem}%")
-																		->orWhere('subject', 'LIKE', "%{$searchItem}%")
-																		->orwhere('ticket_no', 'LIKE', "%{$searchItem}%" )
-																		// ->whereNull('deleted_at')
-																		->get();
-																		//->paginate(5);
-																		*/
 			return view('dashboard.search')->with('tickets', $tickets);
 
 		}

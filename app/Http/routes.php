@@ -171,19 +171,41 @@ Route::group(['middleware' => 'admin'], function (){
     ]);
 
     /**
-    + Ticket delete
+    + Ticket Trash
     */
-    Route::get('dashboard/ticket/delete/{ticket_id}', [
-        'uses' => '\Hdesk\Http\Controllers\TicketController@getTicketDelete',
-        'as'    => 'ticket.delete',
+    Route::get('dashboard/ticket/trash/{ticket_id}', [
+        'uses' => '\Hdesk\Http\Controllers\TrashController@getTrashTicket',
+        'as'    => 'ticket.trash',
       ]);
 
       /**
+      + Ticket Delete
+      */
+      Route::get('dashboard/ticket/delete/{ticket_id}', [
+          'uses' => '\Hdesk\Http\Controllers\TicketController@getTicketDelete',
+          'as'    => 'ticket.delete',
+        ]);
+      /**
       + Ticket Status
       */
-      Route::get('dashboard/tickets/closed/{$ticket_status}', [
-        'usses' => '\Hdesk\Http\Controllers\TicketController@getclosedTickets',
-        'as'    => 'status.closed',
+      // Route::get('dashboard/tickets/closed/{$ticket_status}', [
+      //   'usses' => '\Hdesk\Http\Controllers\TicketController@getclosedTickets',
+      //   'as'    => 'status.closed',
+      // ]);
+
+      Route::get('dashboard/tickets/open', [
+        'uses'  => '\Hdesk\Http\Controllers\DashboardController@getOpenTickets',
+        'as'    => 'tickets.open',
+      ]);
+
+      Route::get('dashboard/tickets/pending', [
+        'uses'  => '\Hdesk\Http\Controllers\DashboardController@getPendingTickets',
+        'as'    => 'tickets.pending',
+      ]);
+
+      Route::get('dashboard/tickets/closed', [
+        'uses'  => '\Hdesk\Http\Controllers\DashboardController@getClosedTickets',
+        'as'    => 'tickets.closed',
       ]);
 
 
@@ -196,7 +218,7 @@ Route::group(['middleware' => 'admin'], function (){
     ]);
 
     /**
-    + Trash
+    + TrashBin
     */
 
     Route::get('dashboard/trash',[

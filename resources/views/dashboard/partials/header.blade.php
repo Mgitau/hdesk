@@ -7,16 +7,10 @@
       <div class="container">
         <div class="nav navbar-nav">
 
-          <form class="navbar-form navbar-left" action="#" method="post">
-            <div class="form-group">
-              <select class="selectpicker " name="ticket-status">
-                <option class="open_ticket">Open Tickets</option>
-                <option class="pending_ticket">Pending Tickets</option>
-                <option class="closed_ticket">Closed Tickets</option>
-              </select>
-              <button type="button" class="btn btn-success" name="button">Apply</button>
-            </div>
-          </form>
+          <a class="btn btn-warning navbar-btn" href="{{ Route('tickets.open') }}" role="button"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Open</a>
+          <a class="btn btn-info navbar-btn" href="{{ Route('tickets.pending') }}" role="button"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> Pending</a>
+          <a class="btn btn-success navbar-btn" href="{{ Route('tickets.closed') }}" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Closed</a>
+          <a class="btn btn-primary navbar-btn" href="{{ Route('ticket.newticket') }}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Ticket</a>
 
           <form class="navbar-form navbar-right" action="{{ Route('dashboard.search') }}"role="search">
               <div class="form-group{{ $errors->has('searchItem') ? ' has-error': '' }}">
@@ -29,8 +23,6 @@
               <button type="submit" class="btn btn-default">Search</button>
             </form>
 
-
-          <a class="btn btn-primary navbar-btn" href="{{ Route('ticket.newticket') }}" role="button">+ New Ticket</a>
         </div><!-- .nav navbar-nav -->
 
       </div><!-- .container-->

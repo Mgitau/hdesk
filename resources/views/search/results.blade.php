@@ -22,9 +22,9 @@
 
           @if(Auth::check())
           <span class="pull-right">
-            <a class="btn btn-success" href="#" role="button">Mark Complete</a>
-            <a class="btn btn-primary" href="{{ Route('ticket.edit', ['ticket_id' => $ticket->id]) }}" role="button">Edit</a>
-            <a class="btn btn-danger" href="{{ Route('ticket.delete', ['ticket_id' => $ticket->id]) }}" role="button">Trash</a>
+            <a class="btn btn-success" href="#" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Mark Closed</a>
+            <a class="btn btn-primary" href="{{ Route('ticket.edit', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+            <a class="btn btn-danger" href="{{ Route('ticket.trash', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Trash</a>
           </span>
           @endif
 

@@ -48,10 +48,31 @@
           <label for="name" class="col-lg-2 control-label">Category</label>
           <div class="dropdown col-lg-8">
                           <select class="selectpicker" name="category">
-                              <option>General</option>
-                              <option>BIM</option>
+                            @if($ticket->category === 'General')
+                              <option selected="selected">General</option>
                               <option>Support</option>
                               <option>Printing</option>
+                              <option>Bim</option>
+
+                            @elseif($ticket->category === 'Support')
+                              <option>General</option>
+                              <option selected="selected">Support</option>
+                              <option>Printing</option>
+                              <option>Bim</option>
+
+                            @elseif($ticket->category === 'Printing')
+                              <option>General</option>
+                              <option>Support</option>
+                              <option selected="selected">Printing</option>
+                              <option>Bim</option>
+
+                            @elseif($ticket->category === 'BIM')
+                              <option>General</option>
+                              <option>Support</option>
+                              <option>Printing</option>
+                              <option selected="selected">Bim</option>
+
+                            @endif
                           </select>
           </div>
         </div>
@@ -63,14 +84,22 @@
           <label for="name" class="col-lg-2 control-label">Priority</label>
           <div class="dropdown col-lg-8">
                           <select class="selectpicker" name="priority">
-
-
-                              <option class="priority-low">Low</option>
-
+                            @if($ticket->priority === 'Low')
+                              <option class="priority-low" selected="selected">Low</option>
                               <option class="priority-medium">Medium</option>
-
                               <option class="priority-high">High</option>
 
+                            @elseif($ticket->priority === 'Medium')
+                              <option class="priority-low">Low</option>
+                              <option class="priority-medium selected="selected"">Medium</option>
+                              <option class="priority-high">High</option>
+
+                            @elseif($ticket->priority === 'High')
+                              <option class="priority-low">Low</option>
+                              <option class="priority-medium">Medium</option>
+                              <option class="priority-high selected="selected"">High</option>
+
+                            @endif
                           </select>
           </div>
 
@@ -81,9 +110,21 @@
 
           <div class="dropdown col-lg-8">
                           <select class="selectpicker" name="status">
-                              <option>Open</option>
+                            @if($ticket->status === 'Open')
+                              <option selected="selected">Open</option>
                               <option>Pending</option>
                               <option>Closed</option>
+
+                            @elseif($ticket->status === 'Pending')
+                              <option>Open</option>
+                              <option selected="selected">Pending</option>
+                              <option>Closed</option>
+
+                            @elseif($ticket->status === 'Closed')
+                              <option>Open</option>
+                              <option>Pending</option>
+                              <option selected="selected">Closed</option>
+                            @endif
                           </select>
           </div>
 

@@ -28,7 +28,7 @@ class TicketController extends Controller
             'ticket_no' => 'required',
         ]);
 
-        $ticket = Ticket::create([
+        $ticket = \Hdesk\Models\Ticket::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'category' => $request->input('category'),
@@ -51,9 +51,8 @@ class TicketController extends Controller
      }
 
      public function getTicketEdit($id){
-
-       $ticket = DB::table('tickets')->where('id', 'LIKE', "%{$id}%")->first();
-      return view('ticket.editticket')->with('ticket', $ticket);
+       $ticket = \Hdesk\Models\Ticket::where('id', 'LIKE', "%{$id}%")->first();
+       return view('ticket.editticket')->with('ticket', $ticket);
      }
 
      public function postTicketEdit(Request $request){
@@ -71,8 +70,7 @@ class TicketController extends Controller
 
         $ticket_id = $request->input('id');
 
-        DB::table('tickets')
-        ->where('id', "{$ticket_id}")
+        $ticket = \Hdesk\Models\Ticket::where('id', "{$ticket_id}")
         ->update([
           'name'  => $request->input('name'),
           'email'  => $request->input('email'),
@@ -89,18 +87,7 @@ class TicketController extends Controller
 
      }
 
-     public function getTicketDelete($id){
-      $ticket = Ticket::find($id)->delete();
-      // $ticket->delete();
 
-
-
-
-      return redirect()->route('dashboard.index')->with('info', 'Ticket has been deleted');
-      //return back()->with('info', 'Ticket has been deleted');
-
-
-     }
 
 
 

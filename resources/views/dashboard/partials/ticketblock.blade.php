@@ -54,10 +54,11 @@
         {{$ticket->name}}
       </td>
       <td>
-        {{ Carbon\Carbon::createFromTimestamp(strtotime($ticket->created_at))->diffForHumans() }}
+
+        {{$ticket->created_at->diffForHumans()}}
       </td>
       <td>
-        {{ Carbon\Carbon::createFromTimestamp(strtotime($ticket->updated_at))->diffForHumans() }}
+        {{$ticket->updated_at->diffForHumans()}}
       </td>
     </tr>
 
