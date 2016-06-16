@@ -1,5 +1,7 @@
 @extends('templates.default')
 
+@section('title', 'Admin Login')
+
 @section('content')
 
 <div class="container">

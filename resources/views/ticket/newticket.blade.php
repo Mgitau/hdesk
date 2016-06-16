@@ -1,5 +1,5 @@
 @extends('templates.default')
-
+@section('title', 'New Ticket')
 @section('content')
 
 	<div class="container">

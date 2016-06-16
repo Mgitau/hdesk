@@ -1,5 +1,5 @@
 @extends('templates.default')
-
+@section('title', 'Results')
 @section('content')
 
 
@@ -22,7 +22,7 @@
 
           @if(Auth::check())
           <span class="pull-right">
-            <a class="btn btn-success" href="#" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Mark Closed</a>
+            <a class="btn btn-success" href="{{ Route('status.closed', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Mark Closed</a>
             <a class="btn btn-primary" href="{{ Route('ticket.edit', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
             <a class="btn btn-danger" href="{{ Route('ticket.trash', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Trash</a>
           </span>
@@ -64,56 +64,6 @@
 
             <div class="col-md-2">
 
-               <p><b>Created on:</b></p>
-
-            </div> <!--end col-md-2-->
-
-            <div class="col-md-10">
-
-                {{$ticket->created_at}}
-
-            </div>
-
-        </div> <!--end row-->
-
-        <div class="row">
-
-            <div class="col-md-2">
-
-               <p><b>Updated on:</b></p>
-
-            </div> <!--end col-md-2-->
-
-            <div class="col-md-10">
-
-                {{$ticket->updated_at}}
-
-            </div>
-
-        </div> <!--end row-->
-
-<!--
-        <div class="row">
-
-            <div class="col-md-2">
-
-               <p><b>Last Replier:</b></p>
-
-            </div>
-
-            <div class="col-md-10">
-
-                Agent 007
-
-            </div>
-
-        </div> end row
--->
-
-        <div class="row">
-
-            <div class="col-md-2">
-
                <p><b>Category:</b></p>
 
             </div> <!--end col-md-2-->
@@ -125,24 +75,6 @@
             </div>
 
         </div> <!--end row-->
-
-<!--
-        <div class="row">
-
-            <div class="col-md-2">
-
-               <p><b>Replies:</b></p>
-
-            </div>
-
-            <div class="col-md-10">
-
-                0
-
-            </div>
-
-        </div> end row
--->
 
         <div class="row">
 
@@ -160,23 +92,39 @@
 
         </div> <!--end row-->
 
-        <hr class="hdesk-hr">
-
         <div class="row">
 
             <div class="col-md-2">
 
-               <p><b>Date:</b></p>
+               <p><b>Created on:</b></p>
 
             </div> <!--end col-md-2-->
 
             <div class="col-md-10">
 
-                {{$ticket->created_at}}
+                {{$ticket->created_at->diffForHumans()}}
 
             </div>
 
         </div> <!--end row-->
+
+        <div class="row">
+
+            <div class="col-md-2">
+
+               <p><b>Updated on:</b></p>
+
+            </div> <!--end col-md-2-->
+
+            <div class="col-md-10">
+
+                {{$ticket->updated_at->diffForHumans()}}
+
+            </div>
+
+        </div> <!--end row-->
+
+        <hr class="hdesk-hr">
 
         <div class="row">
 

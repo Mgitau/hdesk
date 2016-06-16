@@ -1,5 +1,5 @@
 @extends('templates.default')
-
+@section('title', 'TrashBin')
 @section('content')
 
   <!-- include Ticket Partial -->
@@ -13,7 +13,7 @@
   @else
 
   <!-- include Ticket Partial -->
-  @include('dashboard.partials.ticketblock')
+  @include('trash.partials.trashblock')
 
 
   </div><!--end container-->

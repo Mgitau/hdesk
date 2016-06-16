@@ -1,5 +1,9 @@
 @extends('templates.default')
 
+@section('title', 'Dashboard')
+
+@section('title', 'Dashboard')
+
 @section('content')
 
 		<!-- include Ticket Partial -->

@@ -165,7 +165,7 @@ Route::group(['middleware' => 'admin'], function (){
         ]);
 
     // Search by ticket id
-    Route::get('dashboard/ticket/{ticketid}', [
+    Route::get('dashboard/ticket/{ticket_id}', [
         'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
         'as'        => 'search.ticketbyid',
     ]);
@@ -188,26 +188,29 @@ Route::group(['middleware' => 'admin'], function (){
       /**
       + Ticket Status
       */
-      // Route::get('dashboard/tickets/closed/{$ticket_status}', [
-      //   'usses' => '\Hdesk\Http\Controllers\TicketController@getclosedTickets',
-      //   'as'    => 'status.closed',
-      // ]);
 
       Route::get('dashboard/tickets/open', [
-        'uses'  => '\Hdesk\Http\Controllers\DashboardController@getOpenTickets',
+        'uses'  => '\Hdesk\Http\Controllers\TicketStatusController@getOpenTickets',
         'as'    => 'tickets.open',
       ]);
 
       Route::get('dashboard/tickets/pending', [
-        'uses'  => '\Hdesk\Http\Controllers\DashboardController@getPendingTickets',
+        'uses'  => '\Hdesk\Http\Controllers\TicketStatusController@getPendingTickets',
         'as'    => 'tickets.pending',
       ]);
 
       Route::get('dashboard/tickets/closed', [
-        'uses'  => '\Hdesk\Http\Controllers\DashboardController@getClosedTickets',
+        'uses'  => '\Hdesk\Http\Controllers\TicketStatusController@getClosedTickets',
         'as'    => 'tickets.closed',
       ]);
 
+      /**
+      + Ticket Status
+      */
+      Route::get('dashboard/tickets/{ticket_id}/closed', [
+        'uses'  => '\Hdesk\Http\Controllers\TicketStatusController@getCloseTicket',
+        'as'    => 'status.closed',
+      ]);
 
     /**
     + Search

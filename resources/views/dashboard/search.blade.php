@@ -1,5 +1,7 @@
 @extends('templates.default')
 
+@section('title', 'Search')
+
 @section('content')
 
 		<!-- include Ticket Partial -->

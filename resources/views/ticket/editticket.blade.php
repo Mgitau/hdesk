@@ -1,4 +1,5 @@
 @extends('templates.default')
+@section('title', 'Edit')
 
 @section('content')
 

@@ -1,5 +1,5 @@
 @extends('templates.default')
-
+@section('title', 'Ticket Search')
 @section('content')
 
 	<div class="row">

@@ -1,5 +1,7 @@
 @extends('templates.default')
 
+@section('title', 'New Agent')
+
 @section('content')
 
 	<div class="container">
