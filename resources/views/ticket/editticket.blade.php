@@ -67,7 +67,7 @@
                               <option selected="selected">Printing</option>
                               <option>Bim</option>
 
-                            @elseif($ticket->category === 'BIM')
+                            @elseif($ticket->category === 'Bim')
                               <option>General</option>
                               <option>Support</option>
                               <option>Printing</option>
@@ -92,7 +92,7 @@
 
                             @elseif($ticket->priority === 'Medium')
                               <option class="priority-low">Low</option>
-                              <option class="priority-medium selected="selected"">Medium</option>
+                              <option class="priority-medium" selected="selected">Medium</option>
                               <option class="priority-high">High</option>
 
                             @elseif($ticket->priority === 'High')

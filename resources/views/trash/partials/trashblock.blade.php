@@ -64,8 +64,8 @@
         {{$ticket->updated_at->diffForHumans()}}
       </td>
       <td>
-        <button type="button" name="button" class="btn btn-default">Restore</button>
-        <button type="button" name="button" class="btn btn-danger">Delete</button>
+        <button type="button" name="button" class="btn btn-xs btn-default">Restore</button>
+        <button type="button" name="button" class="btn btn-xs btn-danger">Delete</button>
       </td>
     </tr>
 
