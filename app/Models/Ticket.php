@@ -24,4 +24,17 @@ class Ticket extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function scopeOpenTicketCount(){
+      return \Hdesk\Models\Ticket::where('status', 'Open')->count();
+    }
+
+    public function scopePendingTicketCount(){
+      return $PendingTickets = \Hdesk\Models\Ticket::where('status', 'Pending')->count();
+
+    }
+
+    public function scopeClosedTicketCount(){
+      return $ClosedTickets = \Hdesk\Models\Ticket::where('status', 'Closed')->count();
+    }
 }
