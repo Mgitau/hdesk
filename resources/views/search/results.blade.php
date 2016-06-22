@@ -196,7 +196,27 @@
         </div> <!--end row-->
 
     </div> <!--end hdesk-container-->
+    <br>
+  @if(auth::check())
+    <div class="hdesk-container">
+      <div class="row">
+        <div class="col-md-12">
+          <form class="form-horizontal" action="{{Route('ticket.comment')}}" method="post">
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="3"></textarea>
+              <br>
+              <span class="pull-right">
+                <button type="submit" class="btn btn-success" name="comment" value="comment">Comment</button>
+                <button type="submit" class="btn btn-primary" name="note" value="note">Note</button>
+              </span>
+            </div>
+          {{ csrf_field() }}
+          </form>
+        </div>
+      </div>
 
+    </div>
+    @endif
 </div><!-- end containter-->
 
 

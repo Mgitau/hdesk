@@ -31,7 +31,6 @@ class Ticket extends Model
 
     public function scopePendingTicketCount(){
       return $PendingTickets = \Hdesk\Models\Ticket::where('status', 'Pending')->count();
-
     }
 
     public function scopeClosedTicketCount(){

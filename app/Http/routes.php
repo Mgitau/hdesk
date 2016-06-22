@@ -68,9 +68,9 @@ Route::group(['middleware' => ['web']], function (){
 			'as'		=> 'admin.signout',
 		]);
 
-		/**
-		* Agent
-		*/
+    /**
+  	+ Agents
+  	*/
 		Route::get('agent/newagent',[
 			'uses'	=> '\Hdesk\Http\Controllers\AgentController@getCreateAgent',
 			'as'		=> 'agent.createagent',
@@ -205,7 +205,7 @@ Route::group(['middleware' => 'admin'], function (){
       ]);
 
       /**
-      + Ticket Status
+      + Ticket Closed
       */
       Route::get('dashboard/tickets/{ticket_id}/closed', [
         'uses'  => '\Hdesk\Http\Controllers\TicketStatusController@getCloseTicket',
@@ -227,6 +227,14 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('dashboard/trash',[
       'uses'  => '\Hdesk\Http\Controllers\TrashController@getTrashbin',
       'as'    => 'dashboard.trash',
+    ]);
+
+    /**
+    + Comments
+    */
+    Route::post('dashboard/comments', [
+      'uses'  => '\Hdesk\Http\Controllers\CommentController@postComment',
+      'as'    => 'ticket.comment',
     ]);
 
 
