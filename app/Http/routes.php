@@ -177,8 +177,8 @@ Route::group(['middleware' => 'admin'], function (){
         'uses' => '\Hdesk\Http\Controllers\TrashController@getTrashTicket',
         'as'    => 'ticket.trash',
       ]);
-
       /**
+
       + Ticket Delete
       */
       Route::get('dashboard/ticket/delete/{ticket_id}', [
@@ -228,6 +228,16 @@ Route::group(['middleware' => 'admin'], function (){
       'uses'  => '\Hdesk\Http\Controllers\TrashController@getTrashbin',
       'as'    => 'dashboard.trash',
     ]);
+
+    /**
+    + TrashBin Restore
+    */
+    Route::get('dashboard/trash/{ticket_id}/restore', [
+      'uses'  => '\Hdesk\Http\Controllers\TrashController@getTrashbinRestore',
+      'as'    => 'trashbin.restore',
+    ]);
+
+    /**
 
     /**
     + Comments
