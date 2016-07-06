@@ -71,6 +71,6 @@
 
     @endforeach
   </table>
-  {!! $tickets->links() !!}
+
 
 </div>
