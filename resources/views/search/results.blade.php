@@ -206,8 +206,8 @@
               <textarea class="form-control" name="message" rows="3"></textarea>
               <br>
               <span class="pull-right">
-                <button type="submit" class="btn btn-success" name="comment" value="comment">Comment</button>
-                <button type="submit" class="btn btn-primary" name="note" value="note">Note</button>
+                <button type="submit" class="btn btn-success" name="comment" >Comment</button>
+                <button type="submit" class="btn btn-primary" name="note" >Note</button>
               </span>
             </div>
           {{ csrf_field() }}

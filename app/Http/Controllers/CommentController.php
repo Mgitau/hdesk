@@ -15,12 +15,13 @@ class CommentController extends Controller
       ]);
       $comment = $request->input('comment');
       $note =$request->input('note');
+      dd($note);
 
-      if($comment){
-        dd('This is a Comment');
-
-      }elseif($note){
-        dd('This is a note');
-      }
+      // if($comment){
+      //   dd($comment);
+      //
+      // }elseif($note){
+      //   dd($note);
+      // }
     }
 }

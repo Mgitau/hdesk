@@ -66,7 +66,7 @@
       <td>
         <a href="{{Route('trashbin.restore', ['ticket_id '=> $ticket->id])}}" class="btn btn-xs btn-default">Restore</a>
         <!-- <button type="button" name="button" class="btn btn-xs btn-default">Restore</button> -->
-        <button type="button" name="button" class="btn btn-xs btn-danger">Delete</button>
+        <a href="{{Route('trashbin.delete', ['ticket_id' => $ticket->id])}}" class="btn btn-xs btn-danger">Delete</a>
       </td>
     </tr>
 

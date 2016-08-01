@@ -10,7 +10,7 @@ class TrashController extends Controller
 {
     public function getTrashbin(){
 
-      $tickets = Ticket::onlyTrashed()->orderBy('id', 'desc')->paginate(15);
+      $tickets = Ticket::onlyTrashed()->Where('deleted_at','!=','0000-00-00')->orderBy('id', 'desc')->paginate(15);
       return view('trash.trashbin')->with('tickets', $tickets);
 
     }
@@ -26,5 +26,10 @@ class TrashController extends Controller
       $ticket = Ticket::onlyTrashed()->where('id',$id)->restore();
       return redirect()->back()->with('info', 'Ticket Restored');
       //$this->getTrashBin();
+    }
+
+    public function getTrashbinDelete($id){
+      $ticket = Ticket::onlyTrashed()->where('id',$id)->forcedelete();
+      return redirect()->back()->with('info', 'Ticket Permanently Deleted');
     }
  }
