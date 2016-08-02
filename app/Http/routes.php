@@ -248,7 +248,7 @@ Route::group(['middleware' => 'admin'], function (){
     /**
     + Comments
     */
-    Route::post('dashboard/comments', [
+    Route::post('dashboard/{ticket_id}/comments', [
       'uses'  => '\Hdesk\Http\Controllers\CommentController@postComment',
       'as'    => 'ticket.comment',
     ]);

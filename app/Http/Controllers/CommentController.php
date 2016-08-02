@@ -5,23 +5,19 @@ namespace Hdesk\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Hdesk\Http\Requests;
+use Hdesk\Models\Ticket;
 
 class CommentController extends Controller
 {
-    public function postComment(Request $request){
+    public function postComment(Request $request, $id){
 
       $this->validate($request,[
-        'message' => 'max:255',
+        'message' => 'required|max:255',
       ]);
       $comment = $request->input('comment');
-      $note =$request->input('note');
-      dd($note);
 
-      // if($comment){
-      //   dd($comment);
-      //
-      // }elseif($note){
-      //   dd($note);
-      // }
+      dd($comment);
+
+
     }
 }

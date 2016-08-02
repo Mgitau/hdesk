@@ -197,29 +197,105 @@
 
     </div> <!--end hdesk-container-->
     <br>
-  @if(auth::check())
-    <div class="hdesk-container">
-      <div class="row">
-        <div class="col-md-12">
-          <form class="form-horizontal" action="{{Route('ticket.comment')}}" method="post">
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="3"></textarea>
-              <br>
-              <span class="pull-right">
-                <button type="submit" class="btn btn-success" name="comment" >Comment</button>
-                <button type="submit" class="btn btn-primary" name="note" >Note</button>
-              </span>
+@endif
+
+
+@if(auth::check())
+  <div class="hdesk-container">
+    <div class="row">
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#root-cause">Root Cause</button>
+        <!-- Modal -->
+        <div class="modal fade" id="root-cause" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <h4 class="modal-title" id="myModalLabel">Root Cause</h4>
+              </div>
+              <div class="modal-body">
+                Form goes Here
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
             </div>
-          {{ csrf_field() }}
-          </form>
+          </div>
+        </div>
+
+        <!-- <form class="form-horizontal" action="{{Route('ticket.comment',['ticket_id' => $ticket->id])}}" method="post">
+          <div class="form-group{{ $errors->has('message') ? ' has-error': ''}}">
+            <textarea class="form-control" name="message" rows="3"></textarea>
+            @if($errors->has('message'))
+              <span class="help-block">{{ $errors->first('message') }}</span>
+            @endif
+            <br>
+            <span class="pull-right">
+              <button type="submit" class="btn btn-success" name="comment" >Comment</button>
+              <button type="submit" class="btn btn-primary" name="note" >Note</button>
+            </span>
+          </div>
+        {{ csrf_field() }}
+        </form> -->
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#action-required">Action Required</button>
+        <!-- Modal -->
+        <div class="modal fade" id="action-required" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <h4 class="modal-title" id="myModalLabel">Action Required</h4>
+              </div>
+              <div class="modal-body">
+                Form goes Here
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <div class="col-md-3">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#corrective-action">Corrective Action</button>
+        <!-- Modal -->
+        <div class="modal fade" id="corrective-action" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <h4 class="modal-title" id="myModalLabel">Corrective Action</h4>
+              </div>
+              <div class="modal-body">
+                Form goes Here
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    @endif
+
+
+
+
+
+
+  </div>
+  @endif
+
+
 </div><!-- end containter-->
 
 
-@endif
+
 
 @stop
