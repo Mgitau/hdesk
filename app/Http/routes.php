@@ -164,11 +164,11 @@ Route::group(['middleware' => 'admin'], function (){
 
         ]);
 
-    // Search by ticket id
-    Route::get('dashboard/ticket/{ticket_id}', [
-        'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
-        'as'        => 'search.ticketbyid',
-    ]);
+    // // Search by ticket id
+    // Route::get('dashboard/ticket/{ticket_id}', [
+    //     'uses'  => '\Hdesk\Http\Controllers\SearchController@getTicketById',
+    //     'as'        => 'search.ticketid',
+    // ]);
 
     /**
     + Ticket Trash
@@ -228,6 +228,10 @@ Route::group(['middleware' => 'admin'], function (){
       'uses'  => '\Hdesk\Http\Controllers\TrashController@getTrashbin',
       'as'    => 'dashboard.trash',
     ]);
+
+    /**
+    + TrashBin View Ticket
+    */
 
     /**
     + TrashBin Restore

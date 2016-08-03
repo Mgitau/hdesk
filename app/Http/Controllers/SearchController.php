@@ -31,7 +31,8 @@ class SearchController extends Controller
 		public function getTicketById($ticketid)
 		{
 
-			$ticket = \Hdesk\Models\Ticket::where('id','LIKE', "%{$ticketid}%")->first();
+			$ticket = Ticket::withTrashed()->where('id','LIKE', "%{$ticketid}%")->first();
+			//dd($ticket);
 			return view('search.results')->with('ticket', $ticket);
 		}
 
