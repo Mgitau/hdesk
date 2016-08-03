@@ -41,11 +41,11 @@ class TicketController extends Controller
         $ticketnumber =$request->input('ticket_no');
 
        //Send submitted ticket in an email
-      //  Mail::send('ticket.email', ['ticket' => $ticket], function($message) use ($ticket){
-      //      $message->to($ticket->email, $ticket->name)
-      //              ->subject('Ticket Received-'.$ticket->subject)
-      //              ->bcc('it@triad.co.ke', 'Triad IT Dpartment');
-      //  });
+       Mail::send('ticket.email', ['ticket' => $ticket], function($message) use ($ticket){
+           $message->to($ticket->email, $ticket->name)
+                   ->subject('Ticket Received-'.$ticket->subject)
+                   ->bcc('it@triad.co.ke', 'Triad IT Dpartment');
+       });
 
        return redirect()->route('home')->with('info', 'Your ticket has been successfully submitted! Ticket ID: '.$ticketnumber);
      }
