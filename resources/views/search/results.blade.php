@@ -213,16 +213,17 @@
                      <h4 class="modal-title" id="myModalLabel">Root Cause</h4>
                   </div>
                   <div class="modal-body">
-                    <form>
+                  <form action="{{route('ticket.comment', ['ticket_id' => $ticket->id])}}" id="root_cause" method="post">
                     <div class="form-group">
                       <label for="message-text" class="control-label">Message:</label>
-                      <textarea class="form-control" id="message-text"></textarea>
+                      <textarea class="form-control" name="rootcause" id="message-text"></textarea>
                     </div>
+                    {{ csrf_field() }}
                   </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" onclick="$('#root_cause').submit();"class="btn btn-primary">Submit</button>
                   </div>
                 </div>
               </div>
@@ -240,16 +241,18 @@
                      <h4 class="modal-title" id="myModalLabel">Action Required</h4>
                   </div>
                   <div class="modal-body">
-                    <form action="{{route('ticket.comment', ['ticket_id' => $ticket->id])}}" method="post">
+                    <form action="{{route('ticket.comment', ['ticket_id' => $ticket->id])}}" id="action_required" method="post">
                       <div class="form-group">
                         <label for="message-text" class="control-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+                        <textarea class="form-control" name="actionrequired" id="message-text"></textarea>
                       </div>
+                      {{ csrf_field() }}
                     </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" onclick="$('#action_required').submit();" class="btn btn-primary">Submit</button>
+
                   </div>
                 </div>
               </div>
@@ -267,16 +270,17 @@
                      <h4 class="modal-title" id="myModalLabel">Corrective Action</h4>
                   </div>
                   <div class="modal-body">
-                    <form>
+                      <form action="{{route('ticket.comment', ['ticket_id' => $ticket->id])}}" id="corrective_action" method="post">
                       <div class="form-group">
                         <label for="message-text" class="control-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+                        <textarea class="form-control" name="correctiveaction" id="message-text"></textarea>
                       </div>
+                      {{ csrf_field() }}
                     </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button type="button" onclick="$('#corrective_action').submit();"class="btn btn-primary">Submit</button>
                   </div>
                 </div>
               </div>
