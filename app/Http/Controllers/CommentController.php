@@ -10,7 +10,7 @@ use Hdesk\Models\Ticket;
 class CommentController extends Controller
 {
     public function postComment(Request $request, $id){
-
+      dd($id);
       $this->validate($request,[
         'message' => 'required|max:255',
       ]);

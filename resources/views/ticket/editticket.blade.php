@@ -98,7 +98,7 @@
                             @elseif($ticket->priority === 'High')
                               <option class="priority-low">Low</option>
                               <option class="priority-medium">Medium</option>
-                              <option class="priority-high selected="selected"">High</option>
+                              <option class="priority-high" selected="selected">High</option>
 
                             @endif
                           </select>
