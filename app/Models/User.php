@@ -50,4 +50,6 @@ class User extends Model implements AuthenticatableContract//, CanResetPasswordC
     public function getFirstNameOrUsername(){
       return $this->first_name ?: $this->username;
     }
+
+
 }

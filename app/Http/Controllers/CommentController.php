@@ -3,15 +3,15 @@
 namespace Hdesk\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 use Hdesk\Http\Requests;
 use Hdesk\Models\Ticket;
-use Hdesk\Models\Comment;
 use Hdesk\Models\User;
+use Hdesk\Models\Comment;
 
 class CommentController extends Controller
 {
-    public function postComment(Request $request, $id){
+    public function postComment(Request $request, $ticket_id){
 
 
       $this->validate($request,[
@@ -20,26 +20,19 @@ class CommentController extends Controller
         'correctiveaction' => 'max:255',
       ]);
 
-      $rootcause = $request->input('rootcause');
-      $action_required = $request->input('actionrequired');
-      $corrective_action = $request->input('correctiveaction');
+       Comment::create([
+        'ticket_id'  	=> $ticket_id,
+        'user_id'     => Auth::user()->id,
+        'root_cause'  => $request->input('rootcause'),
+        'action_required' => $request->input('actionrequired'),
+        'corrective_action' => $request->input('correctiveaction'),
+      ]);
 
-      $username = User::$this()->getNameOrUsername();
-      dd($username);
-      // $comment = Comment
+      //$comments = Comment::where('ticket_id',$ticket_id);
 
-      // if($rootcause){
-      //   dd($rootcause);
-      // }elseif($action_required){
-      //   dd($action_required);
-      // }elseif($corrective_action){
-      //   dd($corrective_action);
-      // }
+      dd('All Ok');
 
-
-
-      dd($comment);
-
+    //  return redirect()->back()->with('comments', $comments);
 
     }
 }

@@ -196,7 +196,16 @@
         </div> <!--end row-->
 
     </div> <!--end hdesk-container-->
+
+  
     <br>
+    <div class="panel panel-default">
+      <div class="panel-heading"><b>Action Required</b></div>
+      <div class="panel-body">
+        Some action will fall here
+      </div>
+      <div class="panel-footer">{{ Auth::user()->getNameOrUsername() }}</div>
+    </div>
 
 
     @if(Auth::check())
@@ -290,6 +299,7 @@
 
       </div>
       @endif
+
 
 @endif
 

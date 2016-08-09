@@ -1,6 +1,6 @@
 <?php
 
-namespace Hdesk;
+namespace Hdesk\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,4 +15,8 @@ class Comment extends Model
       'action_required',
       'corrective_action',
     ];
+
+    public function User(){
+      return $this->belongsTo('Hdesk\User');
+    }
 }
