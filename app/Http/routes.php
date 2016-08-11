@@ -262,7 +262,7 @@ Route::group(['middleware' => 'admin'], function (){
     */
 
     Route::get('dashboard/{comment_id}/delete',[
-      'uses'  => '\Hdesk\http\Controllers\CommentController@getCommentDelete',
+      'uses'  => '\Hdesk\Http\Controllers\CommentController@getCommentDelete',
       'as'    => 'comment.delete',
     ]);
 
