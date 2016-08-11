@@ -16,15 +16,15 @@ class SearchController extends Controller
 
     public function getResults(Request $request)
     {
-			$ticket_id = $request->input('ticket_id');
+				$ticket_id = $request->input('ticket_id');
 
-     if(!$ticket_id)
-     {
-         return redirect()->route('search.ticketsearch');
-     }
+	     if(!$ticket_id)
+	     {
+	         return redirect()->route('search.ticketsearch');
+	     }
 
-		 $ticket = \Hdesk\Models\Ticket::where('ticket_no', $ticket_id)->first();
-     return view('search.results')->with('ticket', $ticket);
+			 $ticket = \Hdesk\Models\Ticket::where('ticket_no', $ticket_id)->first();
+	     return view('search.results')->with('ticket', $ticket);
 
     }
 
@@ -32,7 +32,6 @@ class SearchController extends Controller
 		{
 
 			$ticket = Ticket::withTrashed()->where('id','LIKE', "%{$ticketid}%")->first();
-			//dd($ticket);
 			return view('search.results')->with('ticket', $ticket);
 		}
 

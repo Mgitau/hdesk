@@ -16,7 +16,9 @@ class Comment extends Model
       'corrective_action',
     ];
 
-    public function User(){
-      return $this->belongsTo('Hdesk\User');
+    public function user(){
+      return $this->belongsTo('Hdesk\Models\User');
     }
+
+
 }

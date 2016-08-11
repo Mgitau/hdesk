@@ -257,5 +257,14 @@ Route::group(['middleware' => 'admin'], function (){
       'as'    => 'ticket.comment',
     ]);
 
+    /**
+    + Delete Comments
+    */
+
+    Route::get('dashboard/{comment_id}/delete',[
+      'uses'  => '\Hdesk\http\Controllers\CommentController@getCommentDelete',
+      'as'    => 'comment.delete',
+    ]);
+
 
 });

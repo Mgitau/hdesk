@@ -13,7 +13,6 @@ class CommentController extends Controller
 {
     public function postComment(Request $request, $ticket_id){
 
-
       $this->validate($request,[
         'rootcause' => 'max:255',
         'actionrequired' => 'max:255',
@@ -28,11 +27,15 @@ class CommentController extends Controller
         'corrective_action' => $request->input('correctiveaction'),
       ]);
 
-      //$comments = Comment::where('ticket_id',$ticket_id);
+     return redirect()->back()->with('info', 'Comments Added');
 
-      dd('All Ok');
+    }
 
-    //  return redirect()->back()->with('comments', $comments);
+    public function getCommentDelete($comment_id){
+      Comment::find($comment_id)->delete();
+
+      return redirect()->back()->with('info', 'Comment has been deleted');
+
 
     }
 }

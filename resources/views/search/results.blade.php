@@ -196,17 +196,64 @@
         </div> <!--end row-->
 
     </div> <!--end hdesk-container-->
-
-  
     <br>
-    <div class="panel panel-default">
-      <div class="panel-heading"><b>Action Required</b></div>
-      <div class="panel-body">
-        Some action will fall here
-      </div>
-      <div class="panel-footer">{{ Auth::user()->getNameOrUsername() }}</div>
-    </div>
+  @foreach ($ticket->comments as $comment)
 
+    @if($comment->root_cause)
+
+      <div class="panel panel-primary">
+        <div class="panel-heading"><b>Root Cause</b></div>
+        <div class="panel-body">
+          {{$comment->root_cause}}
+        </div>
+        <div class="panel-footer">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span><i> {{ $comment->user->getNameOrUsername() }}</i>
+          @if(Auth::user())
+          <div class="pull-right">
+            <a href="#" class="btn btn-xs btn-default">Edit</a>
+            <a href="{{ Route('comment.delete', [ 'comment_id' => $comment->id]) }}" class="btn btn-xs btn-danger">Delete</a>
+          </div>
+          @endif
+        </div>
+      </div>
+
+    @elseif($comment->action_required)
+
+      <div class="panel panel-success">
+        <div class="panel-heading"><b>Action Required</b></div>
+        <div class="panel-body">
+          {{$comment->action_required}}
+        </div>
+        <div class="panel-footer">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span><i> {{ $comment->user->getNameOrUsername() }}</i>
+          @if(Auth::user())
+          <div class="pull-right">
+            <a href="#" class="btn btn-xs btn-default">Edit</a>
+            <a href="{{ Route('comment.delete', [ 'comment_id' => $comment->id]) }}" class="btn btn-xs btn-danger">Delete</a>
+          </div>
+          @endif
+        </div>
+        </div>
+      @elseif($comment->corrective_action)
+
+      <div class="panel panel-danger">
+        <div class="panel-heading"><b>Corrective Action</b></div>
+        <div class="panel-body">
+          {{$comment->corrective_action}}
+        </div>
+        <div class="panel-footer">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span><i> {{ $comment->user->getNameOrUsername() }}</i>
+          @if(Auth::user())
+          <div class="pull-right">
+            <a href="#" class="btn btn-xs btn-default">Edit</a>
+            <a href="{{ Route('comment.delete', [ 'comment_id' => $comment->id]) }}" class="btn btn-xs btn-danger">Delete</a>
+          </div>
+          @endif
+        </div>
+      </div>
+
+    @endif
+    @endforeach
 
     @if(Auth::check())
       <div class="hdesk-container">
