@@ -6,9 +6,9 @@
     <div class="navbar-header">
       <div class="container">
         <div class="nav navbar-nav">
-
-          <a class="btn btn-warning navbar-btn" href="{{ Route('tickets.open') }}" role="button"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Open</a>
-          <a class="btn btn-info navbar-btn" href="{{ Route('tickets.pending') }}" role="button"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> Pending</a>
+          
+          <a class="btn btn-info navbar-btn" href="{{ Route('tickets.open') }}" role="button"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Open</a>
+          <a class="btn btn-warning navbar-btn" href="{{ Route('tickets.pending') }}" role="button"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> Pending</a>
           <a class="btn btn-success navbar-btn" href="{{ Route('tickets.closed') }}" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Closed</a>
           <a class="btn btn-primary navbar-btn" href="{{ Route('ticket.newticket') }}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Ticket</a>
 

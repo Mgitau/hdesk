@@ -17,42 +17,45 @@
             <div class="alert alert-danger">
                 <p>No ticket found, sorry</p>
            </div>
-
           @else
 
+          <div class="row">
+            <span class="pull-right">
+              @if($ticket->status === 'Open')
+               <span class="statusopen"> {{$ticket->status}}</span>
+
+               @elseif($ticket->status === 'Pending')
+                 <span class="statuspending"> {{$ticket->status}}</span>
+
+               @elseif($ticket->status === 'Closed')
+                 <span class="statusclosed"> {{$ticket->status}}</span>
+
+              @endif
+            </span>
+          </div>
+
+          <br>
+
+          <div class="row">
             @if(Auth::check())
             <span class="pull-right">
               @if($ticket->status === 'Closed')
-                <a class="btn btn-primary" href="{{ Route('ticket.edit', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+                <a class="btn btn-info" href="{{ Route('ticket.edit', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
                 <a class="btn btn-danger" href="{{ Route('ticket.trash', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Trash</a>
               @else
                 <a class="btn btn-success" href="{{ Route('status.closed', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Mark Closed</a>
-                <a class="btn btn-primary" href="{{ Route('ticket.edit', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
+                <a class="btn btn-info" href="{{ Route('ticket.edit', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>
                 <a class="btn btn-danger" href="{{ Route('ticket.trash', ['ticket_id' => $ticket->id]) }}" role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Trash</a>
               @endif
             </span>
             @endif
 
+          </div>
+
             <table class="table">
               <tr>
                 <td class="no-border"><b>Ticket ID:</b></td>
                 <td class="no-border">{{$ticket->ticket_no}}</td>
-              </tr>
-
-              <tr>
-                <td class="no-border"><b>Ticket Status:</b></td>
-                <td class="no-border">
-                   @if($ticket->status === 'Open')
-                    <span class="statusopen"> {{$ticket->status}}</span>
-
-                    @elseif($ticket->status === 'Pending')
-                      <span class="statuspending"> {{$ticket->status}}</span>
-
-                    @elseif($ticket->status === 'Closed')
-                      <span class="statusclosed"> {{$ticket->status}}</span>
-
-                   @endif
-                </td>
               </tr>
 
               <tr>
@@ -101,12 +104,11 @@
 
       </div>
 
-    <br>
   @foreach ($ticket->comments as $comment)
 
     @if($comment->root_cause)
 
-      <div class="panel panel-primary">
+      <div class="panel panel-danger">
         <div class="panel-heading"><b>Root Cause</b></div>
         <div class="panel-body">
           {{$comment->root_cause}}
@@ -124,7 +126,7 @@
 
     @elseif($comment->action_required)
 
-      <div class="panel panel-success">
+      <div class="panel panel-info">
         <div class="panel-heading"><b>Action Required</b></div>
         <div class="panel-body">
           {{$comment->action_required}}
@@ -142,7 +144,7 @@
 
       @elseif($comment->corrective_action)
 
-      <div class="panel panel-danger">
+      <div class="panel panel-success">
         <div class="panel-heading"><b>Corrective Action</b></div>
         <div class="panel-body">
           {{$comment->corrective_action}}
@@ -167,7 +169,7 @@
       <div class="hdesk-container">
         <div class="row">
           <div class="col-md-3">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#root-cause">Root Cause</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#root-cause">Root Cause</button>
             <!-- Modal -->
             <div class="modal fade" id="root-cause" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
@@ -195,7 +197,7 @@
 
           </div>
           <div class="col-md-3">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#action-required">Action Required</button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#action-required">Action Required</button>
             <!-- Modal -->
             <div class="modal fade" id="action-required" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
@@ -214,7 +216,7 @@
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
                     <button type="submit" onclick="$('#action_required').submit();" class="btn btn-primary">Submit</button>
 
                   </div>
@@ -224,7 +226,7 @@
           </div>
 
           <div class="col-md-3">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#corrective-action">Corrective Action</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#corrective-action">Corrective Action</button>
             <!-- Modal -->
             <div class="modal fade" id="corrective-action" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
@@ -253,17 +255,12 @@
         </div>
 
       </div>
+      <br>
       @endif
 
 
 @endif
 
-
-
-
 </div><!-- end containter-->
-
-
-
 
 @stop

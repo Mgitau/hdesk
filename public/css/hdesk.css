@@ -17,21 +17,23 @@
 }
 
 .statusopen{
-	background: #F0AD4E;
-	padding: 5px;
+	background: #31B0D5;
+	padding: 10px 15px 10px 35px;
 	color: #ffffff;
+
 }
 
 .statuspending{
-	background: #31B0D5;
-	padding: 5px;
+	background: #F0AD4E;
+	padding: 10px 15px 10px 35px;
 	color: #ffffff;
 }
 
 .statusclosed{
 	background: #449D44;
-	padding: 5px;
+	padding: 10px 15px 10px 35px;
 	color: #ffffff;
+
 }
 
 .no-border{
