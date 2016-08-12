@@ -16,7 +16,7 @@ class DashboardController extends Controller
   public function getDashboard(){
 
     $tickets =\Hdesk\Models\Ticket::orderBy('id', 'desc')->paginate(15);
-    return view('dashboard.index')->with('tickets', $tickets));
+    return view('dashboard.index')->with('tickets', $tickets);
   }
 
 
