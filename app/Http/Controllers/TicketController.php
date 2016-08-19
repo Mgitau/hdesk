@@ -41,7 +41,7 @@ class TicketController extends Controller
         $ticketnumber =$request->input('ticket_no');
 
        //Send submitted ticket in an email
-       Mail::send('ticket.email', ['ticket' => $ticket], function($message) use ($ticket){
+       Mail::queue('ticket.email', ['ticket' => $ticket], function($message) use ($ticket){
            $message->to($ticket->email, $ticket->name)
                    ->subject('Ticket Received-'.$ticket->subject)
                    ->bcc('it@triad.co.ke', 'Triad IT Dpartment');
