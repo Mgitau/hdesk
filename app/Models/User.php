@@ -51,5 +51,9 @@ class User extends Model implements AuthenticatableContract//, CanResetPasswordC
       return $this->first_name ?: $this->username;
     }
 
+    public function comments(){
+      return $this->hasMany('Hdesk\Models\Comment');
+    }
+
 
 }

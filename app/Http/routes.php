@@ -10,8 +10,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use Illuminate\Mail\Mailer;
 
 Route::group(['middleware' => ['web']], function (){
+
+    // Route::get('email', function(){
+    //
+    //   Mail::later(5, 'email.queue', ['name' => 'Mbugua'], function($message){
+    //
+    //     $message->to('mbugit88@gmail.com', 'Mbugua')->subject('Queued Email');
+    //   });
+    //
+    // });
 
 
     /**

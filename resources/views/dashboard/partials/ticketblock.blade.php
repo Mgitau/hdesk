@@ -45,7 +45,16 @@
         {{$ticket->priority}}
       </td>
       <td>
-        {{$ticket->status}}
+        @if( $ticket->status === 'Open')
+          <span class="label label-info">{{$ticket->status}}</span>
+
+        @elseif( $ticket->status === 'Pending')
+          <span class="label label-warning">{{$ticket->status}}</span>
+
+        @elseif( $ticket->status === 'Closed')
+          <span class="label label-success">{{$ticket->status}}</span>
+        @endif
+
       </td>
       <td>
         {{$ticket->category}}

@@ -20,5 +20,10 @@ class Comment extends Model
       return $this->belongsTo('Hdesk\Models\User');
     }
 
+    public function ticket(){
+      return $this->belongsTo('Hdesk\Models\ticket');
+    }
+
+
 
 }
